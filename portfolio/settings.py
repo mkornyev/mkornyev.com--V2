@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -51,6 +52,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'portfolio.urls'
+
 
 TEMPLATES = [
     {
@@ -135,7 +137,7 @@ STATICFILES_DIRS = (
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # STATIC_URL = get_env_value('STATIC_URL')
-MEDIA_ROOT = os.path.join(BASE_DIR, 'mkv2/user_uploads/')
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'mkv2/user_uploads/')
 
 # DB Configuration 
 
