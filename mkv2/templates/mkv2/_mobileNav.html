@@ -1,0 +1,12 @@
+<script>
+    function goToProjects() { window.location = window.location + "projects" }
+</script>
+
+<div id="mobile-nav">
+    <div class="segmented">
+        <label id="nav1-mobile" class="checked"><input type="radio" name="segmented" checked />About</label>
+        <label id="nav2-mobile"><input type="radio" name="segmented" /> Contact</label>
+        {%  url 'Projects' as projects %}
+        <a href="{{ projects }}" style="width: 33%;"><label id="nav3-mobile" onclick="goToProjects();"><input type="radio" name="segmented" />Projects</label></a>
+    </div>
+</div>

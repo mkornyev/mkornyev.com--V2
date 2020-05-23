@@ -1,0 +1,38 @@
+
+@media only screen and (max-width: 760px) {
+	
+	div.header h1.header-name { 
+		font-size: 2em;
+	}
+
+	div.header p.tagline {
+		font-size: 1.5em !important;
+	}
+
+	.tag-module {
+		font-size: .95em;
+	}
+
+	.header-img {
+		margin-top: 0vh;
+		margin-bottom: 5vh;
+	}
+
+	#nav1-mobile, 
+	#nav2-mobile {
+		z-index: 100;
+	}
+
+} 
+
+@media only screen and (min-width: 760px) and (max-width: 1048px) {
+
+	div.landing div.header {
+		margin-right: 2.5%;
+		padding-left: 5%;
+	}
+
+	div.sub-section {
+		margin-top: 2%;
+	}
+}
