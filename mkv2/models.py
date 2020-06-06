@@ -6,7 +6,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 class Project(models.Model):
-	name = models.CharField(max_length=50, blank=False)
+	name = models.CharField(max_length=500, blank=False)
 	short = models.TextField()
 	content = models.TextField()
 	date = models.DateTimeField(default=datetime.now(), blank=True)
@@ -17,7 +17,7 @@ class Project(models.Model):
 		ordering = ['-date', 'name', 'content']
 
 class Work(models.Model):
-	name = models.CharField(max_length=50, blank=False)
+	name = models.CharField(max_length=500, blank=False)
 	short = models.TextField()
 	content = models.TextField()
 	startDate = models.DateTimeField(default=datetime.now(), blank=False)
