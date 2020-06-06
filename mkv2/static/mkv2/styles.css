@@ -142,6 +142,10 @@
 	margin-bottom: 20px;	
 }
 
+#searchBar {
+	margin: 10px;
+}
+
 #backButton:hover {
 	color: lightgray;
 }
@@ -173,6 +177,35 @@ display: inline-block;
 border-bottom-width: 4px;
 border-right-width: 4px;
 }
+
+.newera {
+	color: #256347;
+}
+.dome {
+	color: indianred;
+}
+.blogbook {
+	color: #17a2b8;
+}
+.bakingfactory {
+	color: #FFC107;
+}
+.fibpalau {
+	color: #4397F7;
+}
+
+.palauanWarrior {
+	color: rgb(114, 177, 248);
+}
+.pymusic {
+	color: #17a2b8;
+}
+
+#items button {
+	display: inline-block;
+	float: right;
+}
+
 
 .container {
 display: flex;

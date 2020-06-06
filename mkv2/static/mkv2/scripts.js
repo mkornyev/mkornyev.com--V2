@@ -1,9 +1,9 @@
 var navCompressed = false; 
 // var minimizedController;
 
-var maxWidth = window.matchMedia("(max-width: 760px)")
-navMediaQuery(maxWidth) 
-maxWidth.addListener(navMediaQuery)
+// var maxWidth = window.matchMedia("(max-width: 760px)")
+// navMediaQuery(maxWidth) 
+// maxWidth.addListener(navMediaQuery)
 
 $(document).ready(function () {
 	// Reset scroll position
@@ -54,20 +54,8 @@ $(document).ready(function () {
 	// MOBILE NAV POSITION
 	$window.scroll( function(){
 		var offset = $(window).scrollTop()
-		// console.log(offset)
 		$('#mobile-nav').css('top', offset)
-		// $('#mobile-nav').css('top', function(index){
-		// 	var offset = $(window).scrollTop()
-		// 	console.log(offset)
-		// 	// console.log(index)
-		// 	return offset
-		// })
 	})
-
-	// $('#nav3-mobile').on('click', function(){
-	// 	var path = window.location.pathname.substring(0, window.location.pathname.indexOf('index.html'))
-	// 	window.location = path + "projects"
-	// })
 
 
 	// ------------- NAV COMPRESSION ------------- 
@@ -173,19 +161,6 @@ $(document).ready(function () {
 		}
 
 	});
-	
-	
-
-	//CHANGE COLOR 
-	// $('#nav3').on('hover', function(event) { 
-	// 	$('');
-	// };
-
-    // $('.nav').on('hover', function(){
-    //     document.getElementById("loading-list").style.display = "block";
-    //     document.getElementById("name-list").style.display = "none";
-    //     document.getElementById("loading-modal").style.display = "none";
-    // });
 
 });
 

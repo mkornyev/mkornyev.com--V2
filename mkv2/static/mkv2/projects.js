@@ -23,4 +23,16 @@ $(document).ready(function () {
 		  }, 700);
 		}
 	});
+
+	// Listeners
+	// $('card').hover(
+	// 	function(){
+	// 		$(this).css('box-shadow', '1px 8px 20px grey');
+	// 		$(this).css('-webkit-transition', 'box-shadow .375s ease-in-out');
+	// 		// box-shadow: 1px 8px 20px grey;
+    // 		// -webkit-transition: box-shadow .375s ease-in-out;
+	// 	}, function() {
+	// 		$(this).css('box-shadow', '0px');
+	// 		$(this).css('-webkit-transition', 'box-shadow .375s ease-in-out');
+	// });
 });
