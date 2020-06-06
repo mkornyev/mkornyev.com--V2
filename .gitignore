@@ -1,0 +1,10 @@
+# Portfolio Gitignore
+*.pyc
+db.sqlite3
+migrations
+.DS_Store
+staticfiles/*
+.vscode/
+mkv2/__pycache__
+portfolio/__pycache__
+mkv3/migrations/__pycache__
