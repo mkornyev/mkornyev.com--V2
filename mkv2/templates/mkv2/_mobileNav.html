@@ -1,5 +1,15 @@
 <script>
-    function goToProjects() { window.location = window.location + "projects" }
+    function goToProjects() { 
+        var h = window.location.href
+        var index = h.indexOf('#')
+
+        if(index > 0) {
+            h = h.substring(0, index)
+        }
+        h = h + 'projects'
+    
+        window.location = h
+    }
 </script>
 
 <div id="mobile-nav">

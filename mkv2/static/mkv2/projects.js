@@ -2,6 +2,12 @@ $(document).ready(function () {
 	// Reset scroll position
 	$(this).scrollTop(0);
 
+	$('#filter-search').keyup(function(){ 
+		console.log('keyup');
+		searchFilters(event);
+	})
+	$('#clearSelectionButton').click(function(){ uncheckAll(event); })
+
 	const logo = document.querySelector("#logo");
 	const header = document.querySelector(".projectsHeading");
 	
@@ -36,3 +42,34 @@ $(document).ready(function () {
 	// 		$(this).css('-webkit-transition', 'box-shadow .375s ease-in-out');
 	// });
 });
+
+//Function to update tag filters when searched 
+function searchFilters() {
+    event.preventDefault()
+
+    var search = $('#filter-search')[0].value.split(' ')
+
+    $("#filter-card .scroll-section label").each(function(){ 
+        var filter = this.innerText.toUpperCase()
+        var includesQuery = false
+
+        for (i = 0; i < search.length; i++) {
+            var query = search[i].toUpperCase()
+
+            if (filter.includes(query)) {
+                includesQuery = true
+                break
+            }
+        }
+
+        if(!includesQuery) { 
+        	if(!$(this).find('input').is(':checked')) { $(this).hide() }
+        } else { $(this).show() }
+    })
+}
+
+// Uncheck all filters
+function uncheckAll(event) {
+    event.preventDefault()
+    $("#filter-card .scroll-section input").prop("checked", false)
+}
