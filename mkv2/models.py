@@ -7,8 +7,8 @@ from django.contrib.auth.models import AbstractUser
 
 class Project(models.Model):
 	name = models.CharField(max_length=500, blank=False)
-	short = models.TextField()
-	content = models.TextField()
+	short = models.TextField(max_length=500)
+	content = models.TextField(max_length=900)
 	date = models.DateTimeField(default=datetime.now(), blank=True)
 	imageName = models.CharField(max_length=200, blank=True)
 	tags = models.ManyToManyField('Tag')
@@ -18,8 +18,8 @@ class Project(models.Model):
 
 class Work(models.Model):
 	name = models.CharField(max_length=500, blank=False)
-	short = models.TextField()
-	content = models.TextField()
+	short = models.TextField(max_length=500)
+	content = models.TextField(max_length=900)
 	startDate = models.DateTimeField(default=datetime.now(), blank=False)
 	endDate = models.DateTimeField(blank=True)
 	imageName = models.TextField(max_length=200, blank=True)
