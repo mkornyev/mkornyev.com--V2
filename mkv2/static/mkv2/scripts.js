@@ -6,6 +6,14 @@ var navCompressed = false;
 // maxWidth.addListener(navMediaQuery)
 
 $(document).ready(function () {
+	
+	// Gallery Auto-Scroll
+	const interval = setInterval(function() {
+		console.log('Fired')
+		$('.flickity-button').first().click();
+	}, 100);	 
+	clearInterval(interval);
+
 	// Reset scroll position
 	$(this).scrollTop(0);
 
@@ -86,8 +94,7 @@ $(document).ready(function () {
 				tl.fromTo(nav2,TIME,{width: WIDTH, height: HEIGHT, fontSize: FONT},{width: C_WIDTH, height: C_HEIGHT, fontSize: C_FONT}, "-=.35");
 				tl.fromTo(nav1,TIME,{width: WIDTH, height: HEIGHT, fontSize: FONT},{width: C_WIDTH, height: C_HEIGHT, fontSize: C_FONT},"-=.3");
 			}
-			navCompressed = true; 
-
+			navCompressed = true
 		} else if (yDist < divHeight) {
 			if (navCompressed) {
 				tl.fromTo(nav1,C_TIME,{width: C_WIDTH, height: C_HEIGHT, fontSize: C_FONT},{width: WIDTH, height: HEIGHT, fontSize: FONT});
@@ -96,9 +103,8 @@ $(document).ready(function () {
 				tl.fromTo(nav3button,C_TIME,{width: '3%', height: C_HEIGHT, fontSize: C_FONT},{width: '4.7%', height: HEIGHT, fontSize: FONT},"-=.5");
 				tl.fromTo(nav4,C_TIME,{width: '20%', top: '48.75%', right: '6.1%'},{width: '30%', top: '50%', right: '6%'},"-=.5");
 			}
-			navCompressed = false; 			
+			navCompressed = false	
 		}
-	  
 	});
 
 	// ------------- NAV COMPRESSION END ------------- 

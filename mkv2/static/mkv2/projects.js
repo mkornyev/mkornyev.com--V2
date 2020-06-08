@@ -7,6 +7,10 @@ $(document).ready(function () {
 		searchFilters(event);
 	})
 	$('#clearSelectionButton').click(function(){ uncheckAll(event); })
+	$('#clearFiltersSearchButton').click(function(){ 
+		uncheckAll(event);
+		$('#clearSelectionButton').click();
+	 })
 
 	const logo = document.querySelector("#logo");
 	const header = document.querySelector(".projectsHeading");
