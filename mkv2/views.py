@@ -15,11 +15,13 @@ def projects(request):
 
     if request.method == 'GET':
         query = request.GET.get('query')
+        tags = request.GET.getlist('tags')
+        context['projects'] = context['filters'].qs
 
         if query:
             context['projects'] = context['filters'].qs.filter( (Q(name__icontains=query) | (Q(short__icontains=query) | Q(content__icontains=query)) ))
             context['anchor'] = '#searchBar'
-        else: 
-            context['projects'] = context['filters'].qs
+        elif tags:
+            context['anchor'] = '#searchBar'
 
     return render(request, 'mkv2/projects.html', context)

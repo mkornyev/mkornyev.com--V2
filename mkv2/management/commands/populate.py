@@ -58,7 +58,7 @@ class Command(BaseCommand):
                         <li>Project Management Best Practices</li>
                         <ul>
                             <li>Use of SCRUM</li>
-                            <li><a style='float: left;' href='https://github.com/mkornyev/ReEntry-Deprecated/projects/1'>Kanban</a></li>
+                            <li><a style='float: left;' href='https://github.com/mkornyev/ReEntry412/projects/1'>Kanban</a></li>
                             <li><a style='float: left;' href='https://github.com/mkornyev/ReEntry-Deprecated/wiki'>Iterative Documentation</a></li>
                         </ul>
                     </ul>
@@ -168,9 +168,9 @@ class Command(BaseCommand):
                     <p class="lead pl-4 pt-2">Consulting Project Artifacts:</p>
                     <ul>
                         <li><a href="http://www.fibpalau.com" style="float: left;" target="_blank">Agency Website: fibpalau.com</a></li>
-                        <li><a href="lib/FinalReport.pdf" style="float:left;" target="_blank">Executive Summary & Final Report</a></li>
+                        <li><a href="static/mkv2/lib/FinalReport.pdf" style="float:left;" target="_blank">Executive Summary & Final Report</a></li>
                             <ul><li>Read more about my consulting engagement here.</li></ul>
-                        <li><a href="lib/Shortlist.pdf" style="float:left;" target="_blank">DMS Shortlist & Reccomendation</a></li>
+                        <li><a href="static/mkv2/lib/Shortlist.pdf" style="float:left;" target="_blank">DMS Shortlist & Recommendation</a></li>
                             <ul><li>See the project proposal.</li></ul>
                     </ul>
                     <p class="lead pl-4 pt-2">Skills Learned:</p>
@@ -225,9 +225,9 @@ class Command(BaseCommand):
         p6.save()
 
         p7 = Project.objects.create(name="""Python Application: <span class="pymusic">PyMusic</span><br>""",
-            short="""A music learning program leveragin Computer Vision to play images of notes. <a href="https://www.youtube.com/watch?v=8jTTfHMAIsc&t">See a real demo of the software here.</a>
-                    <br>
-                    <i>This project made it to the <a href="http://www.krivers.net/15112-s18/gallery.html">lightning round</a> and ranked in the top 25&#37; of over 400 projects.</i>
+            short="""A music learning program leveraging Computer Vision to play images of notes. <a href="https://www.youtube.com/watch?v=8jTTfHMAIsc&t">See a real demo of the software here.</a>
+                    <br><br>
+                    <i>This project made it to the competition's <a href="http://www.krivers.net/15112-s18/gallery.html">lightning round</a> and ranked in the top 25&#37; of over 400 projects.</i>
                     """,
             content="""
                 <br>
@@ -240,7 +240,7 @@ class Command(BaseCommand):
 		        	<li>PyAudio/Wave</li>
 		        	<li>Simple MVC</li>
                     <li>Functional Programming</li>
-		        </ul>
+		        </ul><br>
 		        One of the most ambitious Python projects I've ever built: At first, working with OpenCV was a hit or miss. But, once I got more familiar with the library, the noteReader I designed got much more accurate.
 		        Working with makeshift MVC taught me the importance of well organized code, and required me to implement an agile dispatch system.
                 <br><br>
@@ -263,7 +263,7 @@ class Command(BaseCommand):
 		        	<li>SQL and Python Scripting</li>
 		        	<li>Psycopg2</li>
 		        	<li>Data Modeling, Noralization, and UML</li>
-		        </ul>
+		        </ul><br>
 		        Followed the RDBMS normalization process, from building a data dictionary to drafting a final ERD, and built a resilient data-store in Postgres.
 		        Learning to script and motivate the database with Python was invaluable Development experience, and forced me to operate in an environment with no web framework.
                 <br><br>
@@ -285,7 +285,7 @@ class Command(BaseCommand):
 		        <ul>
 		        	<li>CoBOL Scripting</li>
 		        	<li>inFile/outFile Routines</li>
-		        </ul>
+		        </ul><br>
 		        Built a utility to handle Bond datasets on <a href="https://www.treasurydirect.gov/indiv/tools/tools_savingsbondvalues.htm" style="float: none; margin: 0;">TreasuryDirect.gov</a>.<br>
 		        The website is deprecated, and presents users with an unintuitive way to view price histories. This tool provides the user that, along with some descriptive statistics; all motivated by code written in the dataset's native language.
                 <br><br>
@@ -294,6 +294,25 @@ class Command(BaseCommand):
             date=datetime(2018, 1, 25, 0, 0, 0, 0))
         p9.tags.add(t8)
         p9.save()
+
+        p10 = Project.objects.create(name="""<span class="fibpalau">Big Skinny</span>, Project<br>""",
+            short="""
+                    Created a new build of the original BigSkinny website (<a href="https://bigskinny.net" style="float: none; margin: 0;">bigskinny.net</a>).
+                    """,
+            content="""
+                <br>
+                <br>
+                <p class="lead pl-4 pt-2">Skills Learned:</p>
+		        <ul>
+		        	<li>Bootstrap</li>
+		        </ul>
+                <br>
+                <a href="https://mkcarousel.github.io/" target="_blank" class="btn btn-primary">Site</a>
+                <a href="https://github.com/mkornyev/250-TermProject" target="_blank" class="btn btn-primary">Source</a>
+                """,
+            date=datetime(2018, 2, 26, 0, 0, 0, 0))
+        p10.tags.add(t3)
+        p10.save()
         
         print("\n{} projects and {} tags created.\n".format( Project.objects.count(), Tag.objects.count()))
 

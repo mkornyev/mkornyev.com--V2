@@ -16,8 +16,13 @@ class Command(BaseCommand):
         sow.save()
         """
         # Drop all objects:
+        tagCnt = Tag.objects.count()
         Tag.objects.all().delete()
+
+        projCnt = Project.objects.count()
         Project.objects.all().delete()
+
+        print("{} Tags and {} Projects Deleted".format(tagCnt, projCnt))
 
     def handle(self, *args, **options):
         self._destroyProjects()

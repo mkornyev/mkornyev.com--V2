@@ -10,10 +10,7 @@
 <br id="header_top"> 
 
 <!-- Back Navigation -->
-
-<!-- <div id="backButton"> -->
-    <a  id="backButton" class="arrow-link left" href="{% url 'Home' %}"></a>
-<!-- </div> -->
+<a  id="backButton" class="arrow-link left" href="{% url 'Home' %}"></a>
 
 <!-- Projects Landing Page -->
 <div id="landing-div" class="landing row">
@@ -33,9 +30,6 @@
 <style>
   #items {
     padding: 5%;
-
-    /* display: flex;
-    flex-direction: row; */
   }
 
   .card {
@@ -43,8 +37,6 @@
     vertical-align: top;
     margin: 10px;
     width: 24rem;
-
-    /* border-radius: 10% 10% 2% 2%; */
     border-radius: 3%;
     margin-left: 7px;
     margin-right: 7px;
@@ -140,7 +132,7 @@
 						<input id="filter-search" class="form-control" placeholder="Search for a tag" aria-label="Search">
 					</div>
 
-					<hr style="margin-bottom: 0;">
+					<hr style="margin-bottom: 7px;">
 
 					<!-- DEPENDENCY ON THIS SECTION STRUCTURE: in resourceScripts.js -->
 					<div class="scroll-section">
@@ -207,7 +199,13 @@
       {% endfor %}
       
       {% if request.GET.query %}
-        <br><br><a href="{% url 'Projects' %}" class="btn btn-primary" style="float: center;">See all results</a>
+        <br><br><a href="{% url 'Projects' %}" class="btn btn-primary">See all results</a>
+      {% endif %}
+      {% if request.GET.query and request.GET.tags %}
+        or
+      {% endif %}
+      {% if request.GET.tags %}
+        <button id="clearFiltersSearchButton" class="btn btn-primary">Clear filters</b>
       {% endif %}
   </div>
 
