@@ -39,42 +39,8 @@
 {% include 'mkv2/_linksBanner.html' %}
 
 <div class="row">
-    <div class="col carousel-col" style="height: 80vh;"> 
-    
-        <style>
-            /* Flickity Gallery CSS */
-            .gallery {
-                -webkit-box-sizing: border-box;
-                box-sizing: border-box;
-            }
-
-            .gallery {
-                background: #EEE;
-            }
-
-            .gallery-cell {
-                width: 66vw;
-                height: 34vw;
-                margin-right: 10px;
-                background: #8C8;
-                counter-increment: gallery-cell;
-            }
-            
-            .gallery-cell:before {
-                display: block;
-                text-align: center;
-                content: counter(gallery-cell);
-                line-height: 200px;
-                font-size: 80px;
-                color: white;
-            }
-            
-            .flickity-button {
-                display: none;
-            }
-        </style>
-
-        <h2 style="font-weight: 150; margin: 20px;">What I've Been Working On:</h2>
+    <div class="col carousel-col"> 
+        <h2>What I've Been Working On:</h2>
         <div class="gallery js-flickity" data-flickity-options='{ "wrapAround": true }'>
             <img class="gallery-cell" src="{% static 'mkv2/carousel/solidity.png' %}" alt="Solidity Scripting">
             <img class="gallery-cell" src="{% static 'mkv2/carousel/baking-factory.png' %}" alt="Baking Factory">
