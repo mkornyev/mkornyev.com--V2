@@ -8,9 +8,8 @@
           </button>
         </div>
         <div class="modal-body">
-            <!-- <iframe src="assets/resume.pdf" type="application/pdf" class="modal-content"></iframe> -->
             {% load static %}
-            <embed src="{% static 'mkv2/lib/resume.pdf' %}" type="application/pdf" height="100%" class="modal-content"></embed>
+            <iframe id="resumeEmbed" src="{% static 'mkv2/lib/resume.pdf' %}" type="application/pdf" class="modal-content" style="height: 100%;"></iframe>
         </div>
       </div>
     </div>

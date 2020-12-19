@@ -172,6 +172,15 @@ $(document).ready(function () {
 
 	});
 
+	var safariBrowser = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+	if(safariBrowser && $('#resumeEmbed').height()) {
+		$('#resume-btn').on('click', function(event) { 
+			console.log("Clicked:")
+			setTimeout(function(){ updateResumeHeight(); }, 500);
+		})
+	}
+
 });
 
 
@@ -196,3 +205,12 @@ function toggleNav() {
 		// nav3.style.width = '30%';
 	}
 };
+
+// Also update the resume height
+// @ for Safari Browsers 
+function updateResumeHeight(){
+	var targetHeight = $('div.modal-body').height();
+	var resumeEmbed = $('#resumeEmbed');
+
+	resumeEmbed.height(targetHeight);
+}
