@@ -32,17 +32,19 @@ $(document).ready(function () {
 	// ----------------- LANDING ANIMATION -----------------
 
 	// Nav slide-in
-	tl.fromTo(nav1,.5,{x: 800, opacity: 0},{x:-20, opacity: 1});
-	tl.fromTo(nav1,.25,{x: -20},{x:0});
-	tl.fromTo(nav2,.5,{x: 800, opacity: 0},{x:-20, opacity: 1},"-=.6");
-	tl.fromTo(nav2,.20,{x: -20},{x:0});
-	tl.fromTo(nav3,.5,{x: 800, opacity: 0},{x:-20, opacity: 1},"-=.75");
-	tl.fromTo(nav3,.15,{x: -20},{x:0});
-	tl.fromTo(nav3button,.5,{x: 800, opacity: 0},{x:-20, opacity: 1},"-=1");
-	tl.fromTo(nav3button,.15,{x: -20},{x:0});
-	tl.fromTo(mobileNav,.3,{x: '100vw', opacity: 0},{x: '-5vw', opacity: 1},"-=1");
-	tl.fromTo(mobileNav,.15,{x: '-5vw'},{x: '0vw'},"-=.7");
-	tl.fromTo(headerImg,.75,{opacity: '0'},{opacity: '1'},"-=.25");
+	if(nav1 != null && nav2 != null && nav3 != null && nav3button != null && mobileNav != null && headerImg != null) {
+		tl.fromTo(nav1,.5,{x: 800, opacity: 0},{x:-20, opacity: 1});
+		tl.fromTo(nav1,.25,{x: -20},{x:0});
+		tl.fromTo(nav2,.5,{x: 800, opacity: 0},{x:-20, opacity: 1},"-=.6");
+		tl.fromTo(nav2,.20,{x: -20},{x:0});
+		tl.fromTo(nav3,.5,{x: 800, opacity: 0},{x:-20, opacity: 1},"-=.75");
+		tl.fromTo(nav3,.15,{x: -20},{x:0});
+		tl.fromTo(nav3button,.5,{x: 800, opacity: 0},{x:-20, opacity: 1},"-=1");
+		tl.fromTo(nav3button,.15,{x: -20},{x:0});
+		tl.fromTo(mobileNav,.3,{x: '100vw', opacity: 0},{x: '-5vw', opacity: 1},"-=1");
+		tl.fromTo(mobileNav,.15,{x: '-5vw'},{x: '0vw'},"-=.7");
+		tl.fromTo(headerImg,.75,{opacity: '0'},{opacity: '1'},"-=.25");
+	}
 
 	// ------------- IMG FADE IN --------------
 	var $window = $(window);
@@ -82,30 +84,32 @@ $(document).ready(function () {
 	TIME = .3
 	C_TIME = .4
 
-	$window.scroll(function(event) { 
-		var yDist = (navLink.offset()['top'] + navLink.height());
-		var divHeight = (landing.height());
+	if(navLink.offset() != null) {
+		$window.scroll(function(event) { 
+			var yDist = (navLink.offset()['top'] + navLink.height());
+			var divHeight = (landing.height());
 
-		if (yDist > divHeight) {
-			if (!navCompressed) {
-				tl.fromTo(nav3,TIME,{width: WIDTH, height: HEIGHT, fontSize: FONT},{width: C_WIDTH, height: C_HEIGHT, fontSize: C_FONT});
-				tl.fromTo(nav3button,TIME,{width: '4.7%', height: HEIGHT, fontSize: FONT},{width: '3%', height: C_HEIGHT, fontSize: C_FONT},"-=.4");
-				tl.fromTo(nav4,TIME,{width: '30%', top: '50%', right: '6%'},{width: '20%', top: '48.75%', right: '6.1%'},"-=.4");
-				tl.fromTo(nav2,TIME,{width: WIDTH, height: HEIGHT, fontSize: FONT},{width: C_WIDTH, height: C_HEIGHT, fontSize: C_FONT}, "-=.35");
-				tl.fromTo(nav1,TIME,{width: WIDTH, height: HEIGHT, fontSize: FONT},{width: C_WIDTH, height: C_HEIGHT, fontSize: C_FONT},"-=.3");
+			if (yDist > divHeight) {
+				if (!navCompressed) {
+					tl.fromTo(nav3,TIME,{width: WIDTH, height: HEIGHT, fontSize: FONT},{width: C_WIDTH, height: C_HEIGHT, fontSize: C_FONT});
+					tl.fromTo(nav3button,TIME,{width: '4.7%', height: HEIGHT, fontSize: FONT},{width: '3%', height: C_HEIGHT, fontSize: C_FONT},"-=.4");
+					tl.fromTo(nav4,TIME,{width: '30%', top: '50%', right: '6%'},{width: '20%', top: '48.75%', right: '6.1%'},"-=.4");
+					tl.fromTo(nav2,TIME,{width: WIDTH, height: HEIGHT, fontSize: FONT},{width: C_WIDTH, height: C_HEIGHT, fontSize: C_FONT}, "-=.35");
+					tl.fromTo(nav1,TIME,{width: WIDTH, height: HEIGHT, fontSize: FONT},{width: C_WIDTH, height: C_HEIGHT, fontSize: C_FONT},"-=.3");
+				}
+				navCompressed = true
+			} else if (yDist < divHeight) {
+				if (navCompressed) {
+					tl.fromTo(nav1,C_TIME,{width: C_WIDTH, height: C_HEIGHT, fontSize: C_FONT},{width: WIDTH, height: HEIGHT, fontSize: FONT});
+					tl.fromTo(nav2,C_TIME,{width: C_WIDTH, height: C_HEIGHT, fontSize: C_FONT},{width: WIDTH, height: HEIGHT, fontSize: FONT},"-=.45");
+					tl.fromTo(nav3,C_TIME,{width: C_WIDTH, height: C_HEIGHT, fontSize: C_FONT},{width: WIDTH, height: HEIGHT, fontSize: FONT},"-=.4");
+					tl.fromTo(nav3button,C_TIME,{width: '3%', height: C_HEIGHT, fontSize: C_FONT},{width: '4.7%', height: HEIGHT, fontSize: FONT},"-=.5");
+					tl.fromTo(nav4,C_TIME,{width: '20%', top: '48.75%', right: '6.1%'},{width: '30%', top: '50%', right: '6%'},"-=.5");
+				}
+				navCompressed = false	
 			}
-			navCompressed = true
-		} else if (yDist < divHeight) {
-			if (navCompressed) {
-				tl.fromTo(nav1,C_TIME,{width: C_WIDTH, height: C_HEIGHT, fontSize: C_FONT},{width: WIDTH, height: HEIGHT, fontSize: FONT});
-				tl.fromTo(nav2,C_TIME,{width: C_WIDTH, height: C_HEIGHT, fontSize: C_FONT},{width: WIDTH, height: HEIGHT, fontSize: FONT},"-=.45");
-				tl.fromTo(nav3,C_TIME,{width: C_WIDTH, height: C_HEIGHT, fontSize: C_FONT},{width: WIDTH, height: HEIGHT, fontSize: FONT},"-=.4");
-				tl.fromTo(nav3button,C_TIME,{width: '3%', height: C_HEIGHT, fontSize: C_FONT},{width: '4.7%', height: HEIGHT, fontSize: FONT},"-=.5");
-				tl.fromTo(nav4,C_TIME,{width: '20%', top: '48.75%', right: '6.1%'},{width: '30%', top: '50%', right: '6%'},"-=.5");
-			}
-			navCompressed = false	
-		}
-	});
+		});
+	}
 
 	// ------------- NAV COMPRESSION END ------------- 
 
