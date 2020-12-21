@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 from datetime import datetime
-from mkv2.models import Project, Tag
+from mkv2.models import Project, Tag, Image
 
 
 # POPULATE SCRIPT
@@ -26,6 +26,9 @@ class Command(BaseCommand):
         t6 = Tag.objects.create(name='python')
         t7 = Tag.objects.create(name='postgres')
         t8 = Tag.objects.create(name='cobol')
+        t9 = Tag.objects.create(name='swift')
+        t10 = Tag.objects.create(name='arduino')
+        t11 = Tag.objects.create(name='c++')
         
         t1.save()
         t2.save()
@@ -46,16 +49,15 @@ class Command(BaseCommand):
                     <p class='pl-4 lead'>Libraries Used:</p>
                     <ul>
                         <li>TwilioSMS Service</li>
-                        <li>GSAP TweenMax 2.1 / TimelineMax 2.1 (for transition animations)</li>
-                        <li>MomentJS 2.23 / TempusDominus 5.1 (for reactive calendar widgets)</li>
-                        <li>SortableJS (for drag / droppable list items)</li>
+                        <li>Whitenoise (for static file serving)</li>
+                        <li>GSAP</li>
                     </ul>
                     <p class='lead pl-4 pt-2'>Skills Learned:</p>
                     <ul>
                         <li>Fork-and-Pull methodology</li>
                         <li>Production Deployment to Digital Ocean</li>
                         <li>Dependency Management via Pip</li>
-                        <li>Project Management Best Practices</li>
+                        <li>Project Management & Working with Third Parties</li>
                         <ul>
                             <li>Use of SCRUM</li>
                             <li><a style='float: left;' href='https://github.com/mkornyev/ReEntry412/projects/1'>Kanban</a></li>
@@ -71,6 +73,14 @@ class Command(BaseCommand):
         p.tags.add(t1)
         p.save()
 
+        p.project_images.add(Image.objects.create(filename='newera1.png'),
+                            # Image.objects.create(filename='newera2.png'),
+                            Image.objects.create(filename='newera3.png'), 
+                            Image.objects.create(filename='newera4.png'),
+                            Image.objects.create(filename='newera5.png'),
+                            Image.objects.create(filename='newera6.png'),
+                            Image.objects.create(filename='newera7.png'))
+
         p1 = Project.objects.create(name="<span class='dome'>DoMe</span>, A Collaborative ToDo-List WebApp<br>",
             short="""<span>A Slack-like toDo application. Full stack webapp built with Django 3.0 and deployed on <a href='https://dome-app.herokuapp.com/' style='float: none;'>Heroku.</a></span>""",
             content="""
@@ -82,13 +92,6 @@ class Command(BaseCommand):
                     <li>MomentJS 2.23 / TempusDominus 5.1 (for reactive calendar widgets)</li>
                     <li>SortableJS (for drag / droppable list items)</li>
                 </ul>
-                <p class='lead pl-4 pt-2'>Skills Learned:</p>
-                <ul>
-                    <li>Decreasing server load via AJAX-motivated Comments</li>
-                    <li>Environment management in Heroku</li>
-                    <li>Models & Model Forms in Django</li>
-                    <li>Django-style MVC</li>
-                </ul>
                 <br>
                 <a href="https://dome-app.herokuapp.com/" target="_blank" class="btn btn-primary">Site</a>""",
             date=datetime(2020, 3, 20, 0, 0, 0, 0),
@@ -96,6 +99,12 @@ class Command(BaseCommand):
         p1.tags.add(t)
         p1.tags.add(t1)
         p1.save()
+
+        p1.project_images.add(Image.objects.create(filename='dome1.png'),
+                            Image.objects.create(filename='dome2.png'),
+                            Image.objects.create(filename='dome3.png'), 
+                            Image.objects.create(filename='dome4.png'),
+                            Image.objects.create(filename='dome5.png'))
 
         p2 = Project.objects.create(name="<span class='blogbook'>BlogBook</span>, Social Network WebApp<br>",
             short="""<span>A transparent Social network app. Full stack webapp built with Django 3.0 and deployed on <a href="https://blog-book-app.herokuapp.com/" style="float: none;">Heroku.</a></span>""",
@@ -105,8 +114,7 @@ class Command(BaseCommand):
                     <ul>
                         <li><b>Persistent Image Uploads:</b></li>
                         <ul><li>Tied to an AWS S3 Bucket</li><li>With server-side URL signing</li></ul>
-                        <li>Subtle feed refresh motivated by JS DOM manipulation</li>
-                        <li>User Authentication</li>
+                        <li>Subtle feed refresh motivated by DOM injection</li>
                         <li>User Profiles, Posts, and Comments</li>
                         <li>Global and Follower Post Feeds</li>
                     </ul>
@@ -126,29 +134,32 @@ class Command(BaseCommand):
         p2.tags.add(t1)
         p2.save()
 
+        p2.project_images.add(Image.objects.create(filename='blogbook1.png'),
+                            Image.objects.create(filename='blogbook2.png'), 
+                            Image.objects.create(filename='blogbook3.png'))
+                            
         p3 = Project.objects.create(name="""<span class='bakingfactory'>BakingFactory</span>, Rails WebApp<br>""",
             short="""<span>Ecommerce marketplace Webapp built with the Rails framework. Check me out on <a href="https://baking-factory.herokuapp.com/" style="float: none;">Heroku!</a></span>""",
             content="""
                 <br><br>
 		        <p class="pl-4 lead">Implemented Features:</p>
 		        <ul>
-		        	<li>Cart, checkout, and order creation</li>
-					<li>Payment Gateway Simulation</li>
+		        	<li>Cart sessions, checkouts, and order creation</li>
+					<li>A mocked payment gateway for checkouts</li>
 					<li>Authentication & Authorization for 4 different types of users</li>
-					<li>Informative Admin Dashboards</li>
+					<li>An informative Admin dashboard</li>
 					<li>Baking & Shipping Lists that simulate in-house inventory and fulfilment services</li>
 					<li>Models with a bunch of advanced business logic</li>
-					<li>API w/a SwaggerDocs UI</li>
+					<li>Exposed Swagger API</li>
 		        </ul>
 		        <p class="lead pl-4 pt-2">Skills Learned:</p>
 		        <ul>
-		        	<li>MVC</li>
-		        	<li>RESTful Architecture</li>
-		        	<li>TDD</li>
-		        	<li>Test Coverage Tools (simpleCov)</li>
+		        	<li>MVC & RESTful Architecture in Rails</li>
 		        	<li>Unit Testing Tools (factoryBot, cucumberRails, miniTest)</li>
-		        	<li>CSS Frameworks (Bootstrap, Materialize)</li>
+                    <li>TDD & Code Coverage Tools (simpleCov)</li>
+		        	<li>Multiple CSS Frameworks (Bootstrap, Materialize)</li>
 		        	<li>Development with SQLite, and Deployment with Postgres</li>
+                    <li>Iteratively producing UML diagrams, data dictionaries, & feature schedules, then leveraging these to drive my frontend & backend development</li>
 		        </ul>
                 <br>
                 <a href="https://github.com/mkornyev/BakingFactory" target="_blank" class="btn btn-primary">Source</a>
@@ -161,13 +172,18 @@ class Command(BaseCommand):
         p3.tags.add(t1)
         p3.save()
 
+        p3.project_images.add(Image.objects.create(filename='bf1.png'),
+                            Image.objects.create(filename='bf2.png'), 
+                            Image.objects.create(filename='bf3.png'), 
+                            Image.objects.create(filename='bf4.png'))
+
         p4 = Project.objects.create(name="""<span class="fibpalau">Submission Portal</span>, Consulting Project<br>""",
-            short="""A JavaScript and AJAX motivated webapp which uses a permissioned token to upload to an external API.<br><br><i>This website is a small subset of a consulting project I undertook in the summer of 2019, while working for the Palau Foreign Investment Board.</i>""",
+            short="""A JavaScript & AJAX webapp which uses a permissioned token to facilitate uploads to a document management API.<br><br><i>This website is a small subset of a consulting project I undertook in the summer of 2019, while working for the Palau Foreign Investment Board.</i>""",
             content="""
                     <br><br>
                     <p class="lead pl-4 pt-2">Consulting Project Artifacts:</p>
                     <ul>
-                        <li><a href="http://www.fibpalau.com" style="float: left;" target="_blank">Agency Website: fibpalau.com</a></li>
+                        <li><a href="http://www.fibpalau.com" style="float: left; cursor: not-allowed;" onclick="return false;" target="_blank">Agency Website: fibpalau.com</a>&nbsp;(This site has moved domains <a href="https://fibpalau.github.io" target="_blank">here.</a>)</li>
                         <li><a href="static/mkv2/lib/FinalReport.pdf" style="float:left;" target="_blank">Executive Summary & Final Report</a></li>
                             <ul><li>Read more about my consulting engagement here.</li></ul>
                         <li><a href="static/mkv2/lib/Shortlist.pdf" style="float:left;" target="_blank">DMS Shortlist & Recommendation</a></li>
@@ -182,13 +198,18 @@ class Command(BaseCommand):
                     </ul>
                     <br>
                     <a href="https://github.com/fibpalau/fibpalau.github.io" target="_blank" class="btn btn-primary">Source</a>
-                    <a href="http://fibpalau.com/" target="_blank" class="btn btn-primary">Site</a>
+                    <a href="https://fibpalau.github.io" target="_blank" class="btn btn-primary">Site</a>
                     """,
             date=datetime(2019, 8, 5, 0, 0, 0, 0),
             imageName='portal.png')
         p4.tags.add(t3)
         p4.tags.add(t4)
         p4.save()
+
+        p4.project_images.add(Image.objects.create(filename='portal1.png'), 
+                            Image.objects.create(filename='portal2.png'), 
+                            Image.objects.create(filename='portal3.png'), 
+                            Image.objects.create(filename='portal4.png'))
 
         p5 = Project.objects.create(name="""<span class="palauanWarrior">Palauan Warrior</span>, Freelance Work<br>""",
             short="""A freelance website design made for Master War Club Carver Steven Kanai.""",
@@ -251,6 +272,8 @@ class Command(BaseCommand):
         p7.tags.add(t6)
         p7.save()
 
+        p7.project_images.add(Image.objects.create(filename='pymusic1.png'))
+
         p8 = Project.objects.create(name="""PL/pgSQL DB, Project<br>""",
             short="""
                     A venmo-like transaction database and user store. User functions are implemented entirely using Python and SQL scripts.
@@ -262,10 +285,10 @@ class Command(BaseCommand):
 		        <ul>
 		        	<li>SQL and Python Scripting</li>
 		        	<li>Psycopg2</li>
-		        	<li>Data Modeling, Noralization, and UML</li>
+		        	<li>Data Modeling, Normalization, and UML</li>
 		        </ul><br>
 		        Followed the RDBMS normalization process, from building a data dictionary to drafting a final ERD, and built a resilient data-store in Postgres.
-		        Learning to script and motivate the database with Python was invaluable Development experience, and forced me to operate in an environment with no web framework.
+		        Learning to script and motivate the database with Python was invaluable Development experience, and forced me to operate in an environment with no web framework or ORM.
                 <br><br>
                 <a href="https://github.com/mkornyev/plpgSql_DB" target="_blank" class="btn btn-primary">Source</a>
                 """,
@@ -273,6 +296,8 @@ class Command(BaseCommand):
             imageName='postgres.png')
         p8.tags.add(t7)
         p8.save()
+
+        p8.project_images.add(Image.objects.create(filename='venmodb1.png'))
 
         p9 = Project.objects.create(name="""TreasuryDirect CoBOL File Parser, Project<br>""",
             short="""
@@ -286,8 +311,9 @@ class Command(BaseCommand):
 		        	<li>CoBOL Scripting</li>
 		        	<li>inFile/outFile Routines</li>
 		        </ul><br>
-		        Built a utility to handle Bond datasets on <a href="https://www.treasurydirect.gov/indiv/tools/tools_savingsbondvalues.htm" style="float: none; margin: 0;">TreasuryDirect.gov</a>.<br>
 		        The website is deprecated, and presents users with an unintuitive way to view price histories. This tool provides the user that, along with some descriptive statistics; all motivated by code written in the dataset's native language.
+                <br><br>
+                <b>&#x23;depracatecobol</b>
                 <br><br>
                 <a href="https://github.com/mkornyev/BondReader" target="_blank" class="btn btn-primary">Source</a>
                 """,
@@ -313,8 +339,40 @@ class Command(BaseCommand):
             date=datetime(2018, 2, 26, 0, 0, 0, 0))
         p10.tags.add(t3)
         p10.save()
+
+        p11 = Project.objects.create(name="""<span class="mqttcontroller">Remote Marble Maze</span>, Embedded Project<br>""",
+            short="""
+                    Built an iOS application to broadcast Gyroscope data to an Arduino microcontroller. Ported these inputs to the Arduino using a web server, and enabled the remote control of a laser cut marble maze. 
+                    """,
+            content="""
+                <br>
+                <br>
+                <p class="lead pl-4 pt-2">Skills Learned:</p>
+		        <ul>
+		        	<li>Microcontroller Programming w/C++</li>
+                    <li>Sensor processing mechanics (like smothing and highpass filtering)</li>
+                    <li>Managing high latency with multiple global clients</li>
+                    <li>Prototyping in Fusion360</li>
+		        </ul>
+                <br>
+                Iterated on the traditional marble maze game and developed a microcontroller that moved a laser-cut maze assembly. Also developed unique input schemes to move the two maze axes: 
+                One using two sonar sensors to triangulate an object's X & Y position, and one using the high quality qyroscope in your iOS device. Also added a remote input mode
+                to the Arduino that could read input from an MQTT broker. This enabled unique remote gameplay between players, who could Zoom and control eachothers mazes. 
+                <br><br>
+                <a href="https://courses.ideate.cmu.edu/16-223/f2020/work/2020/12/09/handsfree-balance-maze-final-report/" target="_blank" class="btn btn-primary">Project Report</a>
+                <a href="https://github.com/mkornyev/MQTT_Controller" target="_blank" class="btn btn-primary">iOS Swift Source</a>
+                <a href="https://github.com/mkornyev/MazeMicroController" target="_blank" class="btn btn-primary">Arduino C++ Source</a>
+                """,
+            date=datetime(2020, 12, 1, 0, 0, 0, 0),
+            imageName="mqtt_diagram.png")
+        p11.tags.add(t9, t10, t11)
+        p11.save()
+
+        p11.project_images.add(Image.objects.create(filename='mqtt1.png'),
+                                Image.objects.create(filename='mqtt2.png'),
+                                Image.objects.create(filename='mqtt4.png'))
         
-        print("\n{} projects and {} tags created.\n".format( Project.objects.count(), Tag.objects.count()))
+        print("\n{} Tags, {} Images, and {} Projects Created.\n".format( Tag.objects.count(), Image.objects.count(), Project.objects.count()))
 
     def handle(self, *args, **options):
         self._createProjects()

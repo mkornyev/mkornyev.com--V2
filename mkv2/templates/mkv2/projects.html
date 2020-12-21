@@ -10,6 +10,10 @@
 <meta property="og:description" content="Maksym Kornyev Projects. See a portfolio of my full stack & freelance web development work. My current web stack is Postgres, Python/Flask, Flux, & JS."/>
 {% endblock %}
 
+{% block page_styles %}
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+{% endblock %}
+
 {% block content%}
 
 <!-- Anchor for scrolls -->
@@ -98,6 +102,16 @@
     text-align: unset;
     vertical-align: middle;
     padding: 0px;
+  }
+
+  .slick-image img {
+    width: 600px !important;
+  }
+
+  .slick-image:focus,
+  #items:focus {
+    outline: none;
+    box-shadow: none;
   }
 
   @media only screen and (max-width: 530px) {
@@ -193,6 +207,17 @@
               <div class="modal-body">
                 {{ p.short|safe }}
                 {{ p.content|safe }}
+
+                {% if p.project_images.count > 0 %}
+                  <hr>
+                  <div id="project-carousel-{{p.id}}" class="slick-carousel">
+                      {% for img in p.project_images.all %}
+                      <div class="slick-image">
+                        <img src="{% static 'mkv2/projects/'|add:img.filename %}" alt="{{img.filename}}" >
+                      </div>
+                      {% endfor %}
+                  </div>
+                {% endif %}
               </div>
               <div class="card-footer text-muted">
                 {% for t in p.tags.all %}
@@ -221,6 +246,7 @@
 {% endblock %}
 
 {% block page_scripts %}
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script type="text/javascript" src="{% static 'mkv2/projects.js' %}"></script>
 {% if anchor %}
 <script type='text/javascript'>

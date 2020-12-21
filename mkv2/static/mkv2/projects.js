@@ -2,6 +2,21 @@ $(document).ready(function () {
 	// Reset scroll position
 	$(this).scrollTop(0);
 
+	// Render image galleries 
+	$('.slick-carousel').slick({
+		infinite:true,
+		centerMode: true,
+		variableWidth: true,
+		arrows: false,
+		dots: false,
+		speed: 500,
+		cssEase: 'linear',
+		useTransform:false,
+    autoplay: true
+//      autoplaySpeed: 6000,
+	});
+
+
 	$('#filter-search').keyup(function(){ 
 		console.log('keyup');
 		searchFilters(event);

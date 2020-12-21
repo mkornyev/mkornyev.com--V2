@@ -12,6 +12,7 @@ class Project(models.Model):
 	date = models.DateTimeField(max_length=200, default=datetime.now(), blank=True)
 	imageName = models.CharField(max_length=200, blank=True)
 	tags = models.ManyToManyField('Tag')
+	project_images = models.ManyToManyField('Image')
 
 	class Meta:
 		ordering = ['-date', 'name', 'content']
@@ -24,6 +25,7 @@ class Work(models.Model):
 	endDate = models.DateTimeField(max_length=200, blank=True)
 	imageName = models.TextField(max_length=200, blank=True)
 	tags = models.ManyToManyField('Tag')
+	project_images = models.ManyToManyField('Image')
 
 	class Meta:
 		ordering = ['-startDate', 'name', 'content']
@@ -33,6 +35,12 @@ class Tag(models.Model):
 
 	def __str__(self):
 		return self.name
+
+class Image(models.Model):
+	filename = models.CharField(max_length=200, blank=False)
+
+	def __str__(self):
+		return self.filename
 
 # class User(AbstractUser):
 # 	created_at = models.DateTimeField(default=datetime.now())
