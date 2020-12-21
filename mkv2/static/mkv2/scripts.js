@@ -9,7 +9,6 @@ $(document).ready(function () {
 	
 	// Gallery Auto-Scroll
 	const interval = setInterval(function() {
-		console.log('Fired')
 		$('.flickity-button').first().click();
 	}, 100);	 
 	clearInterval(interval);
@@ -173,10 +172,10 @@ $(document).ready(function () {
 	});
 
 	var safariBrowser = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+	var mobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-	if(safariBrowser && $('#resumeEmbed').height()) {
+	if(safariBrowser && !mobileDevice && $('#resumeEmbed').height()) {
 		$('#resume-btn').on('click', function(event) { 
-			console.log("Clicked:")
 			setTimeout(function(){ updateResumeHeight(); }, 500);
 		})
 	}

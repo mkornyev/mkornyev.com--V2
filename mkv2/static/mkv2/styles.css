@@ -187,6 +187,7 @@ border-right-width: 4px;
 .pymusic { color: #17a2b8; }
 .carnegie { color: rgb(182, 102, 102) !important; }
 .isr { color: #2f55a4; }
+.mqttcontroller { color: #F07038 !important; }
 
 #items button {
 	display: inline-block;
