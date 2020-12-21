@@ -33,7 +33,13 @@
         </p>
 
         <div class="sub-section">
-            <button id="resume-btn" type="button" class="btn btn-lg btn-info" data-toggle="modal" data-target="#resume-modal">Resume</button>
+            <div id="resume-link-desktop">
+                <button id="resume-btn" type="button" class="btn btn-lg btn-info" data-toggle="modal" data-target="#resume-modal">Resume</button>
+            </div>
+            <div id="resume-link-mobile">
+                {% load static %}
+                <a id="resume-link-btn" href="{% static 'mkv2/lib/resume.pdf' %}" class="btn btn-lg btn-info">Resume</a>
+            </div>
             <br><p class="small text-muted">Dont forget to check out <a href="https://mkornyev.github.io">V1</a> of the site.</p>
         </div>
     </div>

@@ -247,7 +247,11 @@ div.header p.tagline {
 	text-align: center;
 }
 
-#resume-btn {
+#resume-link-mobile { display: none; }
+#resume-link-desktop { display: block; }
+
+#resume-btn,
+#resume-link-btn {
 	-moz-transition: all .2s ease-in;
     -o-transition: all .2s ease-in;
     -webkit-transition: all .2s ease-in;
@@ -260,7 +264,8 @@ div.header p.tagline {
     text-decoration: none;
 	background-color: #9FD87B;
 }
-#resume-btn:hover {
+#resume-btn:hover,
+#resume-link-btn:hover {
 	background-color: #9DC3C2;
 	color: black
 }

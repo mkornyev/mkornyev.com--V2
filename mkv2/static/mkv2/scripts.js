@@ -172,9 +172,8 @@ $(document).ready(function () {
 	});
 
 	var safariBrowser = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-	var mobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-	if(safariBrowser && !mobileDevice && $('#resumeEmbed').height()) {
+	if(safariBrowser && $('#resumeEmbed').height()) {
 		$('#resume-btn').on('click', function(event) { 
 			setTimeout(function(){ updateResumeHeight(); }, 500);
 		})
