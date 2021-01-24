@@ -424,7 +424,7 @@ div.nav3 {
 /* About Section  */
 div.about {
 	z-index: -1;
-	margin-bottom: 17%;
+	margin-bottom: 5%;
 }
 
 /* Banner */
@@ -472,15 +472,24 @@ div.banner {
 	border-bottom: 3px solid #D5E5E5;
 }
 
+/* Developer Stats */
+
+div.devstats {
+	padding: 5%;
+}
+
+div.devstats h2.thin-font {
+	margin: 0px;
+}
 
 /* CAROUSEL */
 div.carousel-col {
 	margin-bottom: 15%;
 }
 
-div.carousel-col h2 {
+.thin-font {
 	font-weight: 150; 
-	margin: 20px;
+	margin: 5%;
 }
 
 /* Flickity Gallery CSS */
