@@ -17,14 +17,13 @@ $(document).ready(function () {
 	});
 
 
-	$('#filter-search').keyup(function(){ 
-		console.log('keyup');
-		searchFilters(event);
+	$('#filter-search').keyup(function(event){ 
+		searchFilters(event)
 	})
-	$('#clearSelectionButton').click(function(){ uncheckAll(event); })
-	$('#clearFiltersSearchButton').click(function(){ 
-		uncheckAll(event);
-		$('#clearSelectionButton').click();
+	$('#clearSelectionButton').click(function(event){ uncheckAll(event) })
+	$('#clearFiltersSearchButton').click(function(event){ 
+		uncheckAll(event)
+		$('#searchBarButton').click()
 	 })
 
 	const logo = document.querySelector("#logo");
@@ -63,7 +62,7 @@ $(document).ready(function () {
 });
 
 //Function to update tag filters when searched 
-function searchFilters() {
+function searchFilters(event) {
     event.preventDefault()
 
     var search = $('#filter-search')[0].value.split(' ')

@@ -26,8 +26,8 @@
 <div id="landing-div" class="landing row">
     <div class="header col" style="justify-content: center;">
         {% load static %}
-        <img id="logo" src="{% static 'mkv2/logo.png' %}">
-        <h1 class="projectsHeading">Projects & Work Experience</h1>
+        <img id="logo" class="zero-opacity" src="{% static 'mkv2/logo.png' %}">
+        <h1 class="projectsHeading zero-opacity">Projects & Work Experience</h1>
         <p class="projectsTag">
             See all portfolio items below, or filter by category
         </p>
@@ -236,7 +236,7 @@
         or
       {% endif %}
       {% if request.GET.tags %}
-        <button id="clearFiltersSearchButton" class="btn btn-primary">Clear filters</b>
+        <br><br><button id="clearFiltersSearchButton" class="btn btn-primary">See all results</b>
       {% endif %}
   </div>
 

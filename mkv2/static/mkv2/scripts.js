@@ -1,9 +1,4 @@
 var navCompressed = false; 
-// var minimizedController;
-
-// var maxWidth = window.matchMedia("(max-width: 760px)")
-// navMediaQuery(maxWidth) 
-// maxWidth.addListener(navMediaQuery)
 
 $(document).ready(function () {
 	
@@ -13,13 +8,11 @@ $(document).ready(function () {
 	}, 100);	 
 	clearInterval(interval);
 
-	// Reset scroll position
-	$(this).scrollTop(0);
-
 	const header = document.querySelector(".header");
 	const nav1 = document.querySelector(".nav1");
 	const nav2 = document.querySelector(".nav2");
 	const nav3 = document.querySelector(".nav3");
+	const nav3button = document.querySelector(".nav3button");
 	const nav4 = document.querySelector("#nav4");
 	const headerImg = document.querySelector(".header-img");
 	const tagSection = document.querySelector(".tag-module");
@@ -49,7 +42,7 @@ $(document).ready(function () {
 	var $window = $(window);
 
 	$window.scroll( function(){
-        $('div.banner img').each( function(i){
+        $('div.banner img, fade-in-on-scroll').each( function(i){
             var bottom_of_object = $(this).offset().top + $(this).outerHeight()/3;
             var bottom_of_window = $(window).scrollTop() + $(window).height();
             

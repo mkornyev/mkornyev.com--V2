@@ -33,6 +33,17 @@
 	margin: 20px 0;
 } */
 
+ul.no-bullit { list-style: none; }
+div.row { 
+	width: 100%;
+	margin-left: 0px !important;
+	margin-right: 0px !important;
+}
+
+.zero-opacity {
+	opacity: 0;
+}
+
 #mobile-nav {
 	display: none; 
 	z-index: 102;
@@ -273,6 +284,7 @@ div.header p.tagline {
 .tag-module {
   padding: 1rem;
   padding-top: 0px;
+	padding-bottom: 0px;
   border-width: 10px;
   border-style: solid;
   text-align: left;
@@ -482,9 +494,15 @@ div.devstats h2.thin-font {
 	margin: 0px;
 }
 
+table.table ul {
+	padding-left: 0px;
+}
+
 /* CAROUSEL */
 div.carousel-col {
 	margin-bottom: 15%;
+	padding-left: 0px;
+	padding-right: 0px;
 }
 
 .thin-font {
