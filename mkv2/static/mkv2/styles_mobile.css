@@ -38,6 +38,18 @@
 
 	#resume-link-mobile { display: block; }
 	#resume-link-desktop { display: none; }
+
+	.card {
+    margin-left: 0px !important;
+	}
+
+	div.devstats {
+    padding: 0px;
+	}
+
+	#devstats-header {
+		margin-left: 5%;
+	}
 } 
 
 @media only screen and (min-width: 760px) and (max-width: 1048px) {
