@@ -2,71 +2,38 @@
 
 <html id="html-tag" lang="en"> 
 
-<head>
-    <title>Maksym Kornyev | {% block pageName %}{% endblock %}</title>
-    {% load static %}
-    <link rel="icon" href="{% static 'mkv2/logo.png' %}">
-    
-    <!-- General meta -->
-    <meta charset="utf-8" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <meta name="author" content="Maksym Kornyev">
-    <meta name="keywords" content="maksym,max,kornyev,web,development,javscript,html,css,information,systems,carnegie,mellon,cmu,rails,coltrane,john">
+    <head>
+        <title>Maksym Kornyev | {% block pageName %}{% endblock %}</title>
+        
+        {% load static %}
+        <link rel="icon" href="{% static 'mkv2/logo.png' %}">
+        
+        {% include 'mkv2/_baseMeta.html' %}
 
+        {% block pageMeta %}{% endblock %}
 
-    {% block pageMeta %}{% endblock %}
-    
-    <!-- Schema.org markup for Google+ -->
-    <meta itemprop="name" content="Maksym Kornyev | Portfolio">
-    <meta itemprop="image" content="{% static 'mkv2/logo.png' %}">
+        <!-- CSS -->
+        <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css"> <!-- FlickityCSS --> 
+        <link rel="stylesheet" type="text/css" href="{% static 'mkv2/styles.css' %}" />
+        <link rel="stylesheet" media="all" type="text/css" href="{% static 'mkv2/styles_mobile.css' %}" />
+        {% block page_styles %}{% endblock %}
 
-    <!-- Twitter Card data -->
-    <!-- <meta name="twitter:card" content="product">
-    <meta name="twitter:site" content="@publisher_handle">
-    <meta name="twitter:title" content="Page Title">
-    <meta name="twitter:description" content="Page description less than 200 characters">
-    <meta name="twitter:creator" content="@author_handle">
-    Twitter summary card with large image must be at least 280x150px
-    <meta name="twitter:image:src" content="http://www.example.com/image.jpg">
-    <meta name="twitter:image" content="http://www.example.com/image.jpg">
-    <meta name="twitter:data1" content="$3">
-    <meta name="twitter:label1" content="Price">
-    <meta name="twitter:data2" content="Black">
-    <meta name="twitter:label2" content="Color"> -->
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <!-- Open Graph data -->
-    <meta property="og:title" content="Maksym Kornyev | Portfolio" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="http://mkornyev.com/" />
-    <meta property="og:image" content="{% static 'mkv2/logo.png' %}" />
-    <meta property="og:site_name" content="Maksym Kornyev | Portfolio" />
-    <meta property="article:published_time" content="2020-05-01T00:00:00+01:00" />
-    <meta property="article:modified_time" content="2020-06-10T00:00:00+01:00" />
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css"> <!-- FlickityCSS --> 
-    <link rel="stylesheet" type="text/css" href="{% static 'mkv2/styles.css' %}" />
-    <link rel="stylesheet" media="all" type="text/css" href="{% static 'mkv2/styles_mobile.css' %}" />
-    {% block page_styles %}{% endblock %}
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <!-- JQuery (In Head for working inline scripts)  -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-</head>
+        <!-- JQuery (In Head for working inline scripts)  -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    </head>
 
     <body>
-
         {% block content %}{% endblock %}
 
         <!-- Bootstrap.js -->
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <!-- GSAP -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js" integrity="sha256-fIkQKQryItPqpaWZbtwG25Jp2p5ujqo/NwJrfqAB+Qk=" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js" integrity="sha256-lPE3wjN2a7ABWHbGz7+MKBJaykyzqCbU96BJWjio86U=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TimelineMax.min.js" integrity="sha512-lJDBw/vKlGO8aIZB8/6CY4lV+EMAL3qzViHid6wXjH/uDrqUl+uvfCROHXAEL0T/bgdAQHSuE68vRlcFHUdrUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js" integrity="sha512-8Wy4KH0O+AuzjMm1w5QfZ5j5/y8Q/kcUktK9mPUVaUoBvh3QPUZB822W/vy7ULqri3yR8daH3F58+Y8Z08qzeg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <!-- FlickityJS -->
         <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
         <!-- Custom Scripts -->

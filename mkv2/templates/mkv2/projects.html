@@ -26,7 +26,7 @@
 <div id="landing-div" class="landing row">
     <div class="header col" style="justify-content: center;">
         {% load static %}
-        <img id="logo" class="zero-opacity" src="{% static 'mkv2/logo.png' %}">
+        <img id="logo" class="zero-opacity" src="{% static 'mkv2/logo.png' %}" alt="MK Logo">
         <h1 class="projectsHeading zero-opacity">Projects & Work Experience</h1>
         <p class="projectsTag">
             See all portfolio items below, or filter by category
@@ -175,7 +175,7 @@
             {% if p.imageName %}
               {% load static %}
               {% with 'mkv2/'|add:p.imageName as imageName %}
-                <img class="card-img-top" src="{% static imageName %}" alt="{{ p.imageName }}">
+                <img class="card-img-top" src="{% static imageName %}" alt="{{ p.imageName }}" loading=lazy>
               {% endwith %}
             {% endif %}
             
@@ -213,7 +213,7 @@
                   <div id="project-carousel-{{p.id}}" class="slick-carousel">
                       {% for img in p.project_images.all %}
                       <div class="slick-image">
-                        <img src="{% static 'mkv2/projects/'|add:img.filename %}" alt="{{img.filename}}" >
+                        <img src="{% static 'mkv2/projects/'|add:img.filename %}" alt="{{img.filename}}" loading=lazy>
                       </div>
                       {% endfor %}
                   </div>
