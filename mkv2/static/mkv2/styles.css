@@ -271,8 +271,8 @@ div.header p.tagline {
 	border: none;
 
 	margin-bottom: 5px;
-    margin-left: 25px;
-    text-decoration: none;
+  margin-top: -20px;
+  text-decoration: none;
 	background-color: #9FD87B;
 }
 #resume-btn:hover,
