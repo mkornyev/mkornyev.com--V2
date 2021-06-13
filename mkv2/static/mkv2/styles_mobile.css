@@ -54,6 +54,10 @@
 	#devstats-header {
 		margin-left: 5%;
 	}
+
+	div.devstats h2.thin-font {
+		margin-top: 5%;
+	}
 } 
 
 @media only screen and (min-width: 760px) and (max-width: 1048px) {

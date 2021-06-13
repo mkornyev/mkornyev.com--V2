@@ -33,6 +33,10 @@
 	margin: 20px 0;
 } */
 
+.card-footer { 
+	line-height: 2em;
+}
+
 ul.no-bullit { list-style: none; }
 div.row { 
 	width: 100%;
@@ -199,6 +203,7 @@ border-right-width: 4px;
 .carnegie { color: rgb(182, 102, 102) !important; }
 .isr { color: #2f55a4; }
 .mqttcontroller { color: #F07038 !important; }
+.eda-template { color: #3834B9 !important; }
 
 #items button {
 	display: inline-block;
@@ -470,7 +475,7 @@ div.banner img:hover {
 
 div.banner {
 	margin-top: 12.5vh; 
-	height: 30vw;
+	/* height: 30vw; */
 	background-color: #F7F7F7;
 
 	/*border-top: 5px; */

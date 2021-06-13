@@ -68,10 +68,13 @@
   }
 
   .tag {
+    color: darkslategray !important;
     padding: 4px;
     background-color: lightsteelblue;
     border: 1px solid lightsteelblue;
-    border-radius: 3px 10px 10px 3px;
+    border-radius: 3px 12px 12px 3px;
+    margin-top: 3px;
+    margin-bottom: 3px;
   }
 
   #searchBar {
@@ -187,11 +190,13 @@
               </p>
               <i>{{ p.date|date:"M d, Y" }}</i>
             </div>
+            {% if p.tags.all %}
             <div class="card-footer text-muted">
               {% for t in p.tags.all %}
                 <span class="tag">#{{ t.name }}</span>
               {% endfor %}
             </div>
+            {% endif %}
           </div>
         </button>
 

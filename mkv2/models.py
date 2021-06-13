@@ -35,6 +35,9 @@ class Tag(models.Model):
 
 	def __str__(self):
 		return self.name
+	
+	class Meta:
+		ordering = ['name']
 
 class Image(models.Model):
 	filename = models.CharField(max_length=200, blank=False)

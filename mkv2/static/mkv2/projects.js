@@ -9,10 +9,10 @@ $(document).ready(function () {
 		variableWidth: true,
 		arrows: false,
 		dots: false,
-		speed: 500,
+		// speed: 500,
 		cssEase: 'linear',
 		useTransform:false,
-    autoplay: true
+    autoplay: false
 //      autoplaySpeed: 6000,
 	});
 
