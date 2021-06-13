@@ -29,35 +29,47 @@ class Command(BaseCommand):
         t9 = Tag.objects.create(name='swift')
         t10 = Tag.objects.create(name='arduino')
         t11 = Tag.objects.create(name='c++')
-        
-        t1.save()
-        t2.save()
-        t3.save()
-        t4.save()
-        t5.save()
-        t6.save()
-        t7.save()
-        t8.save()
+        t12 = Tag.objects.create(name='aws ec2')
+        t13 = Tag.objects.create(name='aws s3')
+        t14 = Tag.objects.create(name='aws rds')
+        t15 = Tag.objects.create(name='aws sqs')
+        t16 = Tag.objects.create(name='aws elasticsearch')
+        t17 = Tag.objects.create(name='aws eks')
+        t18 = Tag.objects.create(name='kubernetes')
+        t19 = Tag.objects.create(name='docker')
+        t20 = Tag.objects.create(name='node-js')
 
 
         # Create associated Projects:
         p = Project.objects.create(name="""<span class="newera">NewERA412</span>, Consulting Project<br>""",
-            short="""A Junior year consulting project capstone culminating my third year at Carnegie Mellon.
-                    <br><a href="https://cmuisprojects.org/PDFs/s20/newera.pdf"><i>Read the consultant's executive summary here.</i></a>""",
+            short="""A junior year consulting project capstone.
+                    <a href="https://cmuisprojects.org/PDFs/s20/newera.pdf"><i>Read the consultant's executive summary here.</i></a>""",
             content="""
                     <br><br>
-                    <p class='pl-4 lead'>Libraries Used:</p>
+                    Worked with a local non-profit to develop a custom CRM that tracks their constituent interactions, and helps cater to the org's clients in order to reduce recidivism rates and prevent violence in Allegheny County.
+                    The application not only provided our client with unique features, but served as great <i>proof of social impact</i> to potential grantors and partner organizations. 
+                    <br><br>
+                    <p class='pl-4 lead'>Tooling:</p>
                     <ul>
+                        <li>Django 3.0</li>
+                        <li>Heroku (for our beta deployment)</li>
+                        <li>Digital Ocean (for our production deployment)</li>
                         <li>TwilioSMS Service</li>
-                        <li>Whitenoise (for static file serving)</li>
-                        <li>GSAP</li>
+                        <li>Whitenoise & GSAP libraries</li>
                     </ul>
+                    <br>
+                    <p class='pl-4 lead'>Features:</p>
+                    <ul>
+                        <li>A text notification feature used to send resources to constituents on the go</li>
+                        <li>A referral tracking mechanism which checks whether the constituent has opened their custom-generated referral link</li>
+                        <li>A publically available resource portal for searching & finding community resources</li>
+                    </ul>
+                    <br>
                     <p class='lead pl-4 pt-2'>Skills Learned:</p>
                     <ul>
                         <li>Fork-and-Pull methodology</li>
-                        <li>Production Deployment to Digital Ocean</li>
                         <li>Dependency Management via Pip</li>
-                        <li>Project Management & Working with Third Parties</li>
+                        <li>Project Management & Working with Non-Technical Clients</li>
                         <ul>
                             <li>Use of SCRUM</li>
                             <li><a style='float: left;' href='https://github.com/mkornyev/ReEntry412/projects/1'>Kanban</a></li>
@@ -65,8 +77,11 @@ class Command(BaseCommand):
                         </ul>
                     </ul>
                     <br>
+                    See the Beta Deployment to play around with the app — use the following logins as needed: admin/admin & sow/sow
+                    <br><br>
                     <a href="https://github.com/mkornyev/ReEntry-Deprecated" target="_blank" class="btn btn-primary">Source</a>
-                    <a href="http://newera412.com/" target="_blank" class="btn btn-primary">Site</a>""",
+                    <a href="http://newera412.com/" target="_blank" class="btn btn-primary">Production Site</a>
+                    <a href="https://newera-app.herokuapp.com/" target="_blank" class="btn btn-primary">Beta Deployment</a>""",
             date=datetime(2020, 5, 8, 14, 30, 4, 55),
             imageName='newera.png')
         p.tags.add(t)
@@ -93,8 +108,8 @@ class Command(BaseCommand):
                     <li>SortableJS (for drag / droppable list items)</li>
                 </ul>
                 <br>
-                <a href="https://dome-app.herokuapp.com/" target="_blank" class="btn btn-primary">Site</a>""",
-            date=datetime(2020, 3, 20, 0, 0, 0, 0),
+                <a href="https://dome-app.herokuapp.com/" target="_blank" class="btn btn-primary">Production Site</a>""",
+            date=datetime(2020, 2, 1, 0, 0, 0, 0),
             imageName='dome.png')
         p1.tags.add(t)
         p1.tags.add(t1)
@@ -114,10 +129,11 @@ class Command(BaseCommand):
                     <ul>
                         <li><b>Persistent Image Uploads:</b></li>
                         <ul><li>Tied to an AWS S3 Bucket</li><li>With server-side URL signing</li></ul>
-                        <li>Subtle feed refresh motivated by DOM injection</li>
+                        <li>Subtle feed refresh motivated by AJAX DOM injection</li>
                         <li>User Profiles, Posts, and Comments</li>
                         <li>Global and Follower Post Feeds</li>
                     </ul>
+                    <br>
                     <p class="lead pl-4 pt-2">Skills Learned:</p>
                     <ul>
                         <li>Decreasing server load via AJAX-motivated Comments</li>
@@ -126,12 +142,11 @@ class Command(BaseCommand):
                         <li>Django-style MVC</li>
                     </ul>
                     <br>
-                    <a href="https://blog-book-app.herokuapp.com/" target="_blank" class="btn btn-primary">Site</a>
+                    <a href="https://blog-book-app.herokuapp.com/" target="_blank" class="btn btn-primary">Production Site</a>
                     """,
-            date=datetime(2020, 2, 1, 0, 0, 0, 0),
+            date=datetime(2020, 3, 20, 0, 0, 0, 0),
             imageName='blogbook.png')
-        p2.tags.add(t)
-        p2.tags.add(t1)
+        p2.tags.add(t, t1, t13)
         p2.save()
 
         p2.project_images.add(Image.objects.create(filename='blogbook1.png'),
@@ -165,7 +180,7 @@ class Command(BaseCommand):
                 <a href="https://github.com/mkornyev/BakingFactory" target="_blank" class="btn btn-primary">Source</a>
                 <a href="https://github.com/mkornyev/BakingFactoryAPI" target="_blank" class="btn btn-primary">API</a>
                 <a href="https://baking-factory.herokuapp.com/" target="_blank" class="btn btn-primary">Site</a>                """,
-            date=datetime(2019, 5, 1, 0, 0, 0, 0),
+            date=datetime(2019, 7, 20, 0, 0, 0, 0),
             imageName='baking-factory.png')
         p3.tags.add(t3)
         p3.tags.add(t2)
@@ -198,7 +213,7 @@ class Command(BaseCommand):
                     </ul>
                     <br>
                     <a href="https://github.com/fibpalau/fibpalau.github.io" target="_blank" class="btn btn-primary">Source</a>
-                    <a href="https://fibpalau.github.io" target="_blank" class="btn btn-primary">Site</a>
+                    <a href="https://fibpalau.github.io" target="_blank" class="btn btn-primary">Production Site</a>
                     """,
             date=datetime(2019, 8, 5, 0, 0, 0, 0),
             imageName='portal.png')
@@ -216,9 +231,9 @@ class Command(BaseCommand):
             content="""
                 <br><br>
                 <a href="https://github.com/palauanwarrior/palauanwarrior.github.io" target="_blank" class="btn btn-primary">Source</a>
-                <a href="https://palauanwarrior.github.io/" target="_blank" class="btn btn-primary">Site</a>
+                <a href="https://palauanwarrior.github.io/" target="_blank" class="btn btn-primary">Production Site</a>
                 """,
-            date=datetime(2019, 7, 20, 0, 0, 0, 0),
+            date=datetime(2019, 6, 1, 0, 0, 0, 0),
             imageName='palau-warrior.png')
         p5.tags.add(t3)
         p5.tags.add(t4)
@@ -245,7 +260,7 @@ class Command(BaseCommand):
         p6.tags.add(t5)
         p6.save()
 
-        p7 = Project.objects.create(name="""Python Application: <span class="pymusic">PyMusic</span><br>""",
+        p7 = Project.objects.create(name="""<span class="pymusic">PyMusic</span>, Music Learning App<br>""",
             short="""A music learning program leveraging Computer Vision to play images of notes. <a href="https://www.youtube.com/watch?v=8jTTfHMAIsc&t">See a real demo of the software here.</a>
                     <br><br>
                     <i>This project made it to the competition's <a href="http://www.krivers.net/15112-s18/gallery.html">lightning round</a> and ranked in the top 25&#37; of over 400 projects.</i>
@@ -349,15 +364,16 @@ class Command(BaseCommand):
                 <br>
                 <p class="lead pl-4 pt-2">Skills Learned:</p>
 		        <ul>
-		        	<li>Microcontroller Programming w/C++</li>
-                    <li>Sensor processing mechanics (like smothing and highpass filtering)</li>
+		        	<li>Connecting iOS clients, a message broker, and Microcontroller components</li>
+                    <li>Microcontroller Programming w/C++</li>
+                    <li>Sensor processing mechanics (like smoothing and highpass filtering)</li>
                     <li>Managing high latency with multiple global clients</li>
                     <li>Prototyping in Fusion360</li>
 		        </ul>
                 <br>
-                Iterated on the traditional marble maze game and developed a microcontroller that moved a laser-cut maze assembly. Also developed unique input schemes to move the two maze axes: 
+                Iterated on the traditional marble maze game and developed a microcontroller that moved a physical laser-cut maze assembly. Also developed unique input schemes to move the two maze axes: 
                 One using two sonar sensors to triangulate an object's X & Y position, and one using the high quality qyroscope in your iOS device. Also added a remote input mode
-                to the Arduino that could read input from an MQTT broker. This enabled unique remote gameplay between players, who could Zoom and control eachothers mazes. 
+                to the Arduino that could read input from an MQTT broker. This enabled unique remote gameplay between players, who could Zoom and control eachother's mazes. 
                 <br><br>
                 <a href="https://courses.ideate.cmu.edu/16-223/f2020/work/2020/12/09/handsfree-balance-maze-final-report/" target="_blank" class="btn btn-primary">Project Report</a>
                 <a href="https://github.com/mkornyev/MQTT_Controller" target="_blank" class="btn btn-primary">iOS Swift Source</a>
@@ -371,7 +387,96 @@ class Command(BaseCommand):
         p11.project_images.add(Image.objects.create(filename='mqtt1.png'),
                                 Image.objects.create(filename='mqtt2.png'),
                                 Image.objects.create(filename='mqtt4.png'))
+
+        p12 = Project.objects.create(name="""<span class='dome'>FLP Inventory</span>, Client Project<br>""",
+            short="""
+                    A senior year tech consulting project for a local non-profit. Our student team arrived at an abstract project path, then iterated on & delivered a production inventory management system to our client in <i>2 months</i>. 
+                    """,
+            content="""
+                <br>
+                <br>
+                <p class='pl-4 lead'>Tooling:</p>
+                <ul>
+		        	<li>Django 3.0</li>
+                    <li>CI w/GH Actions for linting, static typechecking, and running our test suite</li>
+                    <li>CD w/a GH Web Hook for beta deployments on Heroku</li>
+                    <li>Docker for packaging the app</li>
+                    <li>AWS EC2 for our production deployment</li>
+		        </ul>
+                <br>
+                <p class='pl-4 lead'>Features:</p>
+                <ul>
+		        	<li>Authentication/Authorization</li>
+                    <li>A full set of IMS features for tracking Item Checkin/Checkouts and their associated constituents, staff members, & supporting information</li>
+                    <li>Complex form & information staging flows</li>
+                    <li>Custom report generation, time-based analytics, and export functionality</li>
+                    <li>A weekly CRON job to back up tax-pertinent information to an external server</li>
+		        </ul>
+                <br>
+                <p class="lead pl-4 pt-2">Skills Learned:</p>
+		        <ul>
+		        	<li>Requirements elicitation</li>
+                    <li>Project Management</li>
+                    <li>Scoping the project within a tight timeframe — we actually leveraged Django's stock DB management site to more quickly iterate on custom features for the system</li>
+		        </ul>
+                <br>
+                See the Source (below) to view the project's Kanban and issue boards, or check out the <a href="https://docs.google.com/document/d/11jZVieWdkskYoGqYnL1vcqemAP6CquMB2xQNZLYfGZY/edit?usp=sharing" target="_blank">system documentation here</a>.
+                Also see the Beta Deployment to use the app in a sandbox environment — logins provided!
+                <br><br>
+                <a href="https://github.com/mkornyev/FLP-Inventory" target="_blank" class="btn btn-primary">Source</a>
+                <a href="http://flpinventory.com/" target="_blank" class="btn btn-primary">Production Site</a>
+                <a href="http://flp-app.herokuapp.com/" target="_blank" class="btn btn-primary">Beta Deployment</a>
+                """,
+            date=datetime(2021, 5, 10, 0, 0, 0, 0),
+            imageName="flp-landing.png")
+        p12.tags.add(t, t1, t12, t19)
+        p12.save()
+
+        p12.project_images.add(Image.objects.create(filename='flp-1.png'),
+                                Image.objects.create(filename='flp-2.png'),
+                                Image.objects.create(filename='flp-3.png'),
+                                Image.objects.create(filename='flp-4.png'),
+                                Image.objects.create(filename='flp-5.png'))
         
+        p13 = Project.objects.create(name="""<span class="eda-template">EDA Template</span><br>""",
+            short="""
+                    An event-driven architecture template with scripts, code, and other IAC. 
+                    <br><br>
+                    This is a personal project I evolved into a starter repo for quickly prototyping web-based microservices, extending the architecture w/common AWS tools, and deploying the app to a basic k8s cluster.
+                    """,
+            content="""
+                <br>
+                <br>
+                <p class='pl-4 lead'>Tooling:</p>
+                <ul>
+                    <li>Python + Flask</li>
+		        	<li>NodeJS + Express</li>
+                    <li>Docker + Kubernetes</li>
+                    <li>AWS EKS, RDS, ES, and SQS</li>
+                    <li>Vagrant & Bash Scripts for setting up clean Dev and Test environments</li>
+		        </ul>
+                <br>
+                <p class='pl-4 lead'>Features:</p>
+                <ul>
+		        	<li>2 sample BFFs (backend-for-frontends)</li>
+                    <li>2 independently scalable Node servers</li>
+                    <li>1 Circuit Breaker</li>
+                    <li>Command Query Responsibility Segregation w/RDS & ES</li>
+                    <li>K8s config files for orchestrating the deployment as a set of services</li>
+		        </ul>
+                <br>
+                See the github source below for more info!
+                <br>
+                <br>
+                <a href="https://github.com/mkornyev/EDA-Template" target="_blank" class="btn btn-primary">Source</a>
+                """,
+            date=datetime(2021, 4, 1, 0, 0, 0, 0),
+            imageName="eda-diagram.png")
+        p13.tags.add(t14, t15, t16, t17, t18, t19, t20)
+        p13.save()
+
+        p13.project_images.add(Image.objects.create(filename='../eda-diagram.png'))
+
         print("\n{} Tags, {} Images, and {} Projects Created.\n".format( Tag.objects.count(), Image.objects.count(), Project.objects.count()))
 
     def handle(self, *args, **options):
