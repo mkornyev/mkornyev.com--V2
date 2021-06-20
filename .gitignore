@@ -7,4 +7,5 @@ staticfiles/*
 .vscode/
 mkv2/__pycache__
 portfolio/__pycache__
-mkv3/migrations/__pycache__
+mkv2/migrations/__pycache__/
+djangoEnv/
