@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='Home'),
     path('projects', views.projects, name='Projects'),
+    path('ipinfo', views.fetchIpInfo, name='IP Info'),
 ]

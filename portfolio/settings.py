@@ -125,7 +125,7 @@ STATIC_URL = '/static/'
 # OTHER CUTOM VARS
 
 # AUTH
-LOGIN_URL = '/login'
+LOGIN_URL = '/'
 LOGIN_REDIRECT_URL = '/'
 
 # DEPLOY

@@ -1,6 +1,6 @@
 # IMPORTS 
 
-from datetime import datetime 
+from datetime import date, datetime, timezone 
 
 from django.db import models
 from django.contrib.auth.models import AbstractUser
@@ -45,14 +45,30 @@ class Image(models.Model):
 	def __str__(self):
 		return self.filename
 
-# class User(AbstractUser):
-# 	created_at = models.DateTimeField(default=datetime.now())
+# SITE VISITORS 
 
-# 	class Meta:
-# 		ordering = ['first_name', 'last_name']
-	
-# 	def __str__(self):
-# 		return self.get_username() + " (" + self.get_full_name() + ")"
+class Visitor(models.Model):
+	ip = models.CharField(max_length=50, blank=False)
+	alias = models.CharField(max_length=50, blank=True)
+	ignoreVisits = models.BooleanField(default=False)
+	# sitevisit_set
 
-# 	def print_attributes(self):
-# 		print("---\nUsername: " + self.get_username() + "\nFirst name: " + self.first_name + "\nLast name: " + self.last_name + "\nEmail: " + self.email + "\nActive:" + str(self.is_active) + "\n---")
+	def __str__(self):
+		if self.alias:
+			return f"{self.alias} | {self.ip}"
+		else:
+			return self.ip
+
+class SiteVisit(models.Model):
+	path = models.CharField(max_length=200, blank=False)
+	meta = models.TextField(blank=True)
+	cookies = models.TextField(blank=True)
+	headers = models.TextField(blank=True)
+	userAgent = models.CharField(max_length=200, blank=True)
+	fromPage = models.CharField(max_length=200, blank=True)
+
+	datetime = models.DateTimeField(default=datetime.now())
+	visitor = models.ForeignKey(Visitor, on_delete=models.CASCADE)
+
+	def __str__(self):
+		return f"Visit to {self.path} by {self.visitor} on {self.datetime.month}/{self.datetime.day}/{str(self.datetime.year)[2:]} @{self.datetime.hour}:{self.datetime.minute}"
