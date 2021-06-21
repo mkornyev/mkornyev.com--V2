@@ -5,14 +5,17 @@ from django.utils.html import format_html
 
 from mkv2.models import Project, Tag, Visitor, SiteVisit
 
-import requests
-
-KEYCDN_BASE_URL = 'https://tools.keycdn.com/geo.json'
-CURRENT_HOST_URL = 'http://www.mkornyev.com'
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    pass
+  list_display = ("get_name", "get_short", "date")
+  search_fields = ("name__icontains", "short__icontains")
+
+  def get_name(self, obj):
+    return format_html(obj.name)
+  
+  def get_short(self, obj):
+    return format_html(obj.short)
 
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):

@@ -19,7 +19,7 @@ CURRENT_HOST_URL = 'http://www.mkornyev.com'
 
 def processRequest(func):
     def printObject(request):
-        incomingIP = request.META.get("REMOTE_ADDR", None)
+        incomingIP = request.META.get("HTTP_X_FORWARDED_FOR", None)
         if not incomingIP: return
 
         newVisitor = Visitor.objects.all().filter(ip=incomingIP).first()
@@ -41,7 +41,7 @@ def processRequest(func):
         visit.save()
     
     def getCleanMeta(meta):
-        fieldsToRemove = ["REMOTE_ADDR","PATH_INFO","HTTP_COOKIE","QUERY_STRING","HTTP_REFERER","CSRF_COOKIE","CONTENT_LENGTH","CONTENT_TYPE","HTTP_HOST","HTTP_CONNECTION","HTTP_SEC_CH_UA","HTTP_SEC_CH_UA_MOBILE","HTTP_UPGRADE_INSECURE_REQUESTS","HTTP_USER_AGENT","HTTP_ACCEPT"]
+        fieldsToRemove = ["HTTP_X_FORWARDED_FOR","PATH_INFO","HTTP_COOKIE","QUERY_STRING","HTTP_REFERER","CSRF_COOKIE","CONTENT_LENGTH","CONTENT_TYPE","HTTP_HOST","HTTP_CONNECTION","HTTP_SEC_CH_UA","HTTP_SEC_CH_UA_MOBILE","HTTP_UPGRADE_INSECURE_REQUESTS","HTTP_USER_AGENT","HTTP_ACCEPT"]
         for f in fieldsToRemove:
             if f in meta: 
                 meta.pop(f)

@@ -17,6 +17,9 @@ class Project(models.Model):
 	class Meta:
 		ordering = ['-date', 'name', 'content']
 
+	def __str__(self):
+		return self.name
+
 class Work(models.Model):
 	name = models.CharField(max_length=500, blank=False)
 	short = models.TextField(max_length=500)
