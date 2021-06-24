@@ -67,8 +67,8 @@ class SiteVisit(models.Model):
 	meta = models.TextField(blank=True)
 	cookies = models.TextField(blank=True)
 	headers = models.TextField(blank=True)
-	userAgent = models.CharField(max_length=200, blank=True)
-	fromPage = models.CharField(max_length=200, blank=True)
+	userAgent = models.TextField(blank=True)
+	fromPage = models.TextField(blank=True)
 
 	datetime = models.DateTimeField(default=datetime.now())
 	visitor = models.ForeignKey(Visitor, on_delete=models.CASCADE)

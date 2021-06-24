@@ -32,7 +32,7 @@ class VisitorAdmin(admin.ModelAdmin):
   get_tot_visits.short_description = "Tracked Visits"
 
   def get_last_visit(self, obj):
-    return SiteVisit.objects.last().datetime
+    return SiteVisit.objects.filter(visitor=obj).last().datetime
   get_last_visit.short_description = "Last Visit"
 
   def get_ip_info(self, obj):
@@ -42,6 +42,15 @@ class VisitorAdmin(admin.ModelAdmin):
   
 @admin.register(SiteVisit)
 class SiteVisitAdmin(admin.ModelAdmin):
-  list_display = ("path", "visitor", "datetime", "fromPage", "userAgent")
+  list_display = ("path", "get_visitor", "get_datetime", "fromPage", "userAgent")
   list_filter = ("datetime",)
   search_fields = ("path__icontains", "visitor__ip__icontains", "visitor__alias__icontains", "fromPage__icontains", "userAgent__icontains")
+
+  def get_visitor(self, obj):
+    url = (reverse('IP Info') + '?' + urlencode({'ip': f'{obj.visitor.ip}'}))
+    return format_html('<a href="{}">{}</a>', url, obj.visitor.ip)
+  get_visitor.short_description = "Visitor"
+
+  def get_datetime(self, obj):
+    return obj.datetime.strftime('%m/%d/%y @ %-I:%M%p')
+  get_datetime.short_description = "Datetime"

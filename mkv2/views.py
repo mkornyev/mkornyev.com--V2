@@ -18,11 +18,11 @@ CURRENT_HOST_URL = 'http://www.mkornyev.com'
 # WRAPPERS 
 
 def processRequest(func):
-    def printObject(request):
+    def track(request):
         incomingIP = request.META.get("HTTP_X_FORWARDED_FOR", None)
         if not incomingIP: return
 
-        newVisitor = Visitor.objects.all().filter(ip=incomingIP).first()
+        newVisitor = Visitor.objects.filter(ip=incomingIP).first()
 
         if not newVisitor:
             newVisitor = Visitor(ip=incomingIP)
@@ -44,11 +44,15 @@ def processRequest(func):
         fieldsToRemove = ["HTTP_X_FORWARDED_FOR","PATH_INFO","HTTP_COOKIE","QUERY_STRING","HTTP_REFERER","CSRF_COOKIE","CONTENT_LENGTH","CONTENT_TYPE","HTTP_HOST","HTTP_CONNECTION","HTTP_SEC_CH_UA","HTTP_SEC_CH_UA_MOBILE","HTTP_UPGRADE_INSECURE_REQUESTS","HTTP_USER_AGENT","HTTP_ACCEPT"]
         for f in fieldsToRemove:
             if f in meta: 
-                meta.pop(f)
+                del meta[f]
         return meta
 
     def wrapper(*args, **kwargs):
-        printObject(args[0])
+        try:
+            track(args[0])
+        except: 
+            newVisitor = Visitor(ip='A SITEVISITOR ERROR HAS OCURRED')
+            newVisitor.save()
         return func(*args, **kwargs)
 
     return wrapper
