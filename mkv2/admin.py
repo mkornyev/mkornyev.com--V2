@@ -28,7 +28,7 @@ class VisitorAdmin(admin.ModelAdmin):
 
 
   def get_tot_visits(self, obj):
-    return SiteVisit.objects.all().filter(visitor=obj).count()
+    return SiteVisit.objects.filter(visitor=obj).count()
   get_tot_visits.short_description = "Tracked Visits"
 
   def get_last_visit(self, obj):

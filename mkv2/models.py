@@ -9,7 +9,7 @@ class Project(models.Model):
 	name = models.CharField(max_length=500, blank=False)
 	short = models.TextField(max_length=500)
 	content = models.TextField(max_length=900)
-	date = models.DateTimeField(max_length=200, default=datetime.now(), blank=True)
+	date = models.DateTimeField(max_length=200, default=datetime.now, blank=True)
 	imageName = models.CharField(max_length=200, blank=True)
 	tags = models.ManyToManyField('Tag')
 	project_images = models.ManyToManyField('Image')
@@ -24,7 +24,7 @@ class Work(models.Model):
 	name = models.CharField(max_length=500, blank=False)
 	short = models.TextField(max_length=500)
 	content = models.TextField(max_length=900)
-	startDate = models.DateTimeField(max_length=200, default=datetime.now(), blank=False)
+	startDate = models.DateTimeField(max_length=200, default=datetime.now, blank=False)
 	endDate = models.DateTimeField(max_length=200, blank=True)
 	imageName = models.TextField(max_length=200, blank=True)
 	tags = models.ManyToManyField('Tag')
@@ -70,7 +70,7 @@ class SiteVisit(models.Model):
 	userAgent = models.TextField(blank=True)
 	fromPage = models.TextField(blank=True)
 
-	datetime = models.DateTimeField(default=datetime.now())
+	datetime = models.DateTimeField(default=datetime.now)
 	visitor = models.ForeignKey(Visitor, on_delete=models.CASCADE)
 
 	def __str__(self):
