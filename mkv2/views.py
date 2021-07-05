@@ -60,12 +60,12 @@ def processRequest(func):
 
 # VIEW FUNCTIONS 
 
-@processRequest
+# @processRequest
 def home(request):
     context = {}
     return render(request, 'mkv2/index.html', context)
 
-@processRequest
+# @processRequest
 def projects(request):
     allProjects = Project.objects.all()
     context = { 'filters': ProjectFilter(request.GET, queryset=allProjects) }
