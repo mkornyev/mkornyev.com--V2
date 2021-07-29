@@ -51,8 +51,7 @@ def processRequest(func):
         try:
             track(args[0])
         except: 
-            newVisitor = Visitor(ip='A SITEVISITOR ERROR HAS OCURRED')
-            newVisitor.save()
+            pass
         return func(*args, **kwargs)
 
     return wrapper
