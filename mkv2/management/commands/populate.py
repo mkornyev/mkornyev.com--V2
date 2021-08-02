@@ -38,6 +38,7 @@ class Command(BaseCommand):
         t18 = Tag.objects.create(name='kubernetes')
         t19 = Tag.objects.create(name='docker')
         t20 = Tag.objects.create(name='node-js')
+        t21 = Tag.objects.create(name='react-js')
 
 
         # Create associated Projects:
@@ -476,6 +477,30 @@ class Command(BaseCommand):
         p13.save()
 
         p13.project_images.add(Image.objects.create(filename='../eda-diagram.png'))
+
+        p14 = Project.objects.create(name="""<span class='fibpalau'>AlarmClock!</span>, React App<br>""",
+            short="""
+                    A quick side-project built with React: an Alarm Clock with an ergonomic UI.
+                    """,
+            content="""
+                <br>
+                <br>
+                <p class='pl-4 lead'>Tooling:</p>
+                <ul>
+		        	<li>React 17.0.2</li>
+                    <li>NodeJS v16.5.0</li>
+		        </ul>
+                <br><br>
+                <a href="https://github.com/mkornyev/ReactiveAlarmClock" target="_blank" class="btn btn-primary">Source</a>
+                <a href="https://ez-alarm.herokuapp.com/" target="_blank" class="btn btn-primary">Site</a>
+                """,
+            date=datetime(2021, 7, 27, 0, 0, 0, 0),
+            imageName="alarmclock.png")
+        p14.tags.add(t1, t20, t21)
+        p14.save()
+
+        p14.project_images.add(Image.objects.create(filename='alarmclock1.png'))
+        
 
         print("\n{} Tags, {} Images, and {} Projects Created.\n".format( Tag.objects.count(), Image.objects.count(), Project.objects.count()))
 
