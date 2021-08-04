@@ -39,6 +39,7 @@ class Command(BaseCommand):
         t19 = Tag.objects.create(name='docker')
         t20 = Tag.objects.create(name='node-js')
         t21 = Tag.objects.create(name='react-js')
+        t22 = Tag.objects.create(name='typescript')
 
 
         # Create associated Projects:
@@ -480,15 +481,17 @@ class Command(BaseCommand):
 
         p14 = Project.objects.create(name="""<span class='fibpalau'>AlarmClock!</span>, React App<br>""",
             short="""
-                    A quick side-project built with React: an Alarm Clock with an ergonomic UI.
+                    A quick side project built with React & Typescript: an Alarm Clock with an ergonomic UI.
                     """,
             content="""
-                <br>
-                <br>
+                <br><br>
+                Built with vanilla React and motivated by timestamps that persist in your browser's localstorage. Refactored and extended to be typesafe!
+                <br><br>
                 <p class='pl-4 lead'>Tooling:</p>
                 <ul>
-		        	<li>React 17.0.2</li>
-                    <li>NodeJS v16.5.0</li>
+		        	<li>React</li>
+                    <li>NodeJS</li>
+                    <li>TypeScript</li>
 		        </ul>
                 <br><br>
                 <a href="https://github.com/mkornyev/ReactiveAlarmClock" target="_blank" class="btn btn-primary">Source</a>
@@ -496,7 +499,7 @@ class Command(BaseCommand):
                 """,
             date=datetime(2021, 7, 27, 0, 0, 0, 0),
             imageName="alarmclock.png")
-        p14.tags.add(t1, t20, t21)
+        p14.tags.add(t1, t20, t21, t22)
         p14.save()
 
         p14.project_images.add(Image.objects.create(filename='alarmclock1.png'))
