@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 from datetime import datetime
-from mkv2.models import Project, Tag, Image
+from mkv2.models import Project, Tag, Image, ProjectScope
 
 
 # POPULATE SCRIPT
@@ -40,6 +40,12 @@ class Command(BaseCommand):
         t20 = Tag.objects.create(name='node-js')
         t21 = Tag.objects.create(name='react-js')
         t22 = Tag.objects.create(name='typescript')
+
+
+        # Create Project Scopes 
+        scope1 = ProjectScope.objects.create(name='Small', description='<1 month', token='s')
+        scope2 = ProjectScope.objects.create(name='Medium', description='1-2 months', token='m')
+        scope3 = ProjectScope.objects.create(name='Large', description='2-6 months', token='l')
 
 
         # Create associated Projects:
@@ -82,12 +88,13 @@ class Command(BaseCommand):
                     See the Beta Deployment to play around with the app — use the following logins as needed: admin/admin & sow/sow
                     <br><br>
                     <a href="https://github.com/mkornyev/ReEntry-Deprecated" target="_blank" class="btn btn-primary">Source</a>
-                    <a href="http://newera412.com/" target="_blank" class="btn btn-primary">Production Site</a>
+                    <a href="http://newera412.com/" target="_blank" class="btn btn-primary site-link">Production Site</a>
                     <a href="https://newera-app.herokuapp.com/" target="_blank" class="btn btn-primary">Beta Deployment</a>""",
             date=datetime(2020, 5, 8, 14, 30, 4, 55),
             imageName='newera.png')
         p.tags.add(t)
         p.tags.add(t1)
+        p.scope = scope3
         p.save()
 
         p.project_images.add(Image.objects.create(filename='newera1.png'),
@@ -110,11 +117,12 @@ class Command(BaseCommand):
                     <li>SortableJS (for drag / droppable list items)</li>
                 </ul>
                 <br>
-                <a href="https://dome-app.herokuapp.com/" target="_blank" class="btn btn-primary">Production Site</a>""",
+                <a href="https://dome-app.herokuapp.com/" target="_blank" class="btn btn-primary site-link">Production Site</a>""",
             date=datetime(2020, 2, 1, 0, 0, 0, 0),
             imageName='dome.png')
         p1.tags.add(t)
         p1.tags.add(t1)
+        p1.scope = scope2
         p1.save()
 
         p1.project_images.add(Image.objects.create(filename='dome1.png'),
@@ -144,11 +152,12 @@ class Command(BaseCommand):
                         <li>Django-style MVC</li>
                     </ul>
                     <br>
-                    <a href="https://blog-book-app.herokuapp.com/" target="_blank" class="btn btn-primary">Production Site</a>
+                    <a href="https://blog-book-app.herokuapp.com/" target="_blank" class="btn btn-primary site-link">Production Site</a>
                     """,
             date=datetime(2020, 3, 20, 0, 0, 0, 0),
             imageName='blogbook.png')
         p2.tags.add(t, t1, t13)
+        p2.scope = scope2
         p2.save()
 
         p2.project_images.add(Image.objects.create(filename='blogbook1.png'),
@@ -181,12 +190,13 @@ class Command(BaseCommand):
                 <br>
                 <a href="https://github.com/mkornyev/BakingFactory" target="_blank" class="btn btn-primary">Source</a>
                 <a href="https://github.com/mkornyev/BakingFactoryAPI" target="_blank" class="btn btn-primary">API</a>
-                <a href="https://baking-factory.herokuapp.com/" target="_blank" class="btn btn-primary">Site</a>                """,
+                <a href="https://baking-factory.herokuapp.com/" target="_blank" class="btn btn-primary site-link">Site</a>                """,
             date=datetime(2019, 7, 20, 0, 0, 0, 0),
             imageName='baking-factory.png')
         p3.tags.add(t3)
         p3.tags.add(t2)
         p3.tags.add(t1)
+        p3.scope = scope2
         p3.save()
 
         p3.project_images.add(Image.objects.create(filename='bf1.png'),
@@ -215,12 +225,13 @@ class Command(BaseCommand):
                     </ul>
                     <br>
                     <a href="https://github.com/fibpalau/fibpalau.github.io" target="_blank" class="btn btn-primary">Source</a>
-                    <a href="https://fibpalau.github.io" target="_blank" class="btn btn-primary">Production Site</a>
+                    <a href="https://fibpalau.github.io" target="_blank" class="btn btn-primary site-link">Production Site</a>
                     """,
             date=datetime(2019, 8, 5, 0, 0, 0, 0),
             imageName='portal.png')
         p4.tags.add(t3)
         p4.tags.add(t4)
+        p4.scope = scope3
         p4.save()
 
         p4.project_images.add(Image.objects.create(filename='portal1.png'), 
@@ -233,12 +244,13 @@ class Command(BaseCommand):
             content="""
                 <br><br>
                 <a href="https://github.com/palauanwarrior/palauanwarrior.github.io" target="_blank" class="btn btn-primary">Source</a>
-                <a href="https://palauanwarrior.github.io/" target="_blank" class="btn btn-primary">Production Site</a>
+                <a href="https://palauanwarrior.github.io/" target="_blank" class="btn btn-primary site-link">Production Site</a>
                 """,
             date=datetime(2019, 6, 1, 0, 0, 0, 0),
             imageName='palau-warrior.png')
         p5.tags.add(t3)
         p5.tags.add(t4)
+        p5.scope = scope1
         p5.save()
 
         p6 = Project.objects.create(name="""Ethereum Smart Contract<br>""",
@@ -260,6 +272,7 @@ class Command(BaseCommand):
             date=datetime(2019, 2, 2, 0, 0, 0, 0),
             imageName='solidity.png')
         p6.tags.add(t5)
+        p6.scope = scope1
         p6.save()
 
         p7 = Project.objects.create(name="""<span class="pymusic">PyMusic</span>, Music Learning App<br>""",
@@ -287,6 +300,7 @@ class Command(BaseCommand):
             date=datetime(2018, 5, 1, 0, 0, 0, 0),
             imageName='pymusic.png')
         p7.tags.add(t6)
+        p7.scope = scope3
         p7.save()
 
         p7.project_images.add(Image.objects.create(filename='pymusic1.png'))
@@ -312,6 +326,7 @@ class Command(BaseCommand):
             date=datetime(2018, 12, 5, 0, 0, 0, 0),
             imageName='postgres.png')
         p8.tags.add(t7)
+        p8.scope = scope2
         p8.save()
 
         p8.project_images.add(Image.objects.create(filename='venmodb1.png'))
@@ -336,6 +351,7 @@ class Command(BaseCommand):
                 """,
             date=datetime(2018, 1, 25, 0, 0, 0, 0))
         p9.tags.add(t8)
+        p9.scope = scope1
         p9.save()
 
         p10 = Project.objects.create(name="""<span class="fibpalau">Big Skinny</span>, Project<br>""",
@@ -350,11 +366,12 @@ class Command(BaseCommand):
 		        	<li>Bootstrap</li>
 		        </ul>
                 <br>
-                <a href="https://mkcarousel.github.io/" target="_blank" class="btn btn-primary">Site</a>
+                <a href="https://mkcarousel.github.io/" target="_blank" class="btn btn-primary site-link">Site</a>
                 <a href="https://github.com/mkornyev/250-TermProject" target="_blank" class="btn btn-primary">Source</a>
                 """,
             date=datetime(2018, 2, 26, 0, 0, 0, 0))
         p10.tags.add(t3)
+        p10.scope = scope1
         p10.save()
 
         p11 = Project.objects.create(name="""<span class="mqttcontroller">Remote Marble Maze</span>, Embedded Project<br>""",
@@ -384,6 +401,7 @@ class Command(BaseCommand):
             date=datetime(2020, 12, 1, 0, 0, 0, 0),
             imageName="mqtt_diagram.png")
         p11.tags.add(t9, t10, t11)
+        p11.scope = scope3
         p11.save()
 
         p11.project_images.add(Image.objects.create(filename='mqtt1.png'),
@@ -426,12 +444,13 @@ class Command(BaseCommand):
                 Also see the Beta Deployment to use the app in a sandbox environment — logins provided!
                 <br><br>
                 <a href="https://github.com/mkornyev/FLP-Inventory" target="_blank" class="btn btn-primary">Source</a>
-                <a href="http://flpinventory.com/" target="_blank" class="btn btn-primary">Production Site</a>
+                <a href="http://flpinventory.com/" target="_blank" class="btn btn-primary site-link">Production Site</a>
                 <a href="http://flp-app.herokuapp.com/" target="_blank" class="btn btn-primary">Beta Deployment</a>
                 """,
             date=datetime(2021, 5, 10, 0, 0, 0, 0),
             imageName="flp-landing.png")
         p12.tags.add(t, t1, t12, t19)
+        p12.scope = scope3
         p12.save()
 
         p12.project_images.add(Image.objects.create(filename='flp-1.png'),
@@ -475,6 +494,7 @@ class Command(BaseCommand):
             date=datetime(2021, 4, 1, 0, 0, 0, 0),
             imageName="eda-diagram.png")
         p13.tags.add(t14, t15, t16, t17, t18, t19, t20)
+        p13.scope = scope2
         p13.save()
 
         p13.project_images.add(Image.objects.create(filename='../eda-diagram.png'))
@@ -495,17 +515,18 @@ class Command(BaseCommand):
 		        </ul>
                 <br><br>
                 <a href="https://github.com/mkornyev/ReactiveAlarmClock" target="_blank" class="btn btn-primary">Source</a>
-                <a href="https://ez-alarm.herokuapp.com/" target="_blank" class="btn btn-primary">Site</a>
+                <a href="https://ez-alarm.herokuapp.com/" target="_blank" class="btn btn-primary site-link">Site</a>
                 """,
             date=datetime(2021, 7, 27, 0, 0, 0, 0),
             imageName="alarmclock.png")
         p14.tags.add(t1, t20, t21, t22)
+        p14.scope = scope1
         p14.save()
 
         p14.project_images.add(Image.objects.create(filename='alarmclock1.png'))
         
 
-        print("\n{} Tags, {} Images, and {} Projects Created.\n".format( Tag.objects.count(), Image.objects.count(), Project.objects.count()))
+        print("\n{} Tags, {} Images, {} ProjectScopes, and {} Projects Created.\n".format( Tag.objects.count(), Image.objects.count(), ProjectScope.objects.count(), Project.objects.count()))
 
     def handle(self, *args, **options):
         self._createProjects()

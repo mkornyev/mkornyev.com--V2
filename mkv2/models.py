@@ -4,7 +4,17 @@ from datetime import date, datetime, timezone
 
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.utils import tree
 
+
+class ProjectScope(models.Model):
+	name = models.CharField(max_length=10, blank=False)
+	description = models.CharField(max_length=200, blank=False)
+	token = models.CharField(max_length=1, blank=False)
+
+	def __str__(self):
+		return f'{self.scope} - {self.description}'
+		
 class Project(models.Model):
 	name = models.CharField(max_length=500, blank=False)
 	short = models.TextField(max_length=500)
@@ -13,6 +23,8 @@ class Project(models.Model):
 	imageName = models.CharField(max_length=200, blank=True)
 	tags = models.ManyToManyField('Tag')
 	project_images = models.ManyToManyField('Image')
+	
+	scope = models.ForeignKey(ProjectScope, blank=True, null=True, on_delete=models.PROTECT)
 
 	class Meta:
 		ordering = ['-date', 'name', 'content']

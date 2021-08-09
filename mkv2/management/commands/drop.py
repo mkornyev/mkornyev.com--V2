@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 from datetime import datetime
-from mkv2.models import Project, Tag, Image, Visitor, SiteVisit
+from mkv2.models import Project, ProjectScope, Tag, Image, Visitor, SiteVisit
 
 # TEARDOWN SCRIPT
 
@@ -25,7 +25,10 @@ class Command(BaseCommand):
         imgCnt = Image.objects.count()
         Image.objects.all().delete()
 
-        print("{} Tags, {} Images, and {} Projects Deleted".format(tagCnt, imgCnt, projCnt))
+        projSCnt = ProjectScope.objects.count()
+        ProjectScope.objects.all().delete()
+
+        print("{} Tags, {} Images, {} ProjectScopes, and {} Projects Deleted".format(tagCnt, imgCnt, projSCnt, projCnt))
     
     def _destroyVisitorData(self):
         visitorCnt = Visitor.objects.count()

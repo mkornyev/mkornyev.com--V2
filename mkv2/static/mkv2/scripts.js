@@ -1,6 +1,11 @@
 var navCompressed = false; 
 
 $(document).ready(function () {
+
+  // Enable ToolTips
+	$(function () {
+		$('[data-bs-toggle="tooltip"]').tooltip()
+	})
 	
 	// Gallery Auto-Scroll
 	const interval = setInterval(function() {

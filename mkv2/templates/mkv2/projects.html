@@ -20,7 +20,9 @@
 <br id="header_top"> 
 
 <!-- Back Navigation -->
-<a  id="backButton" class="arrow-link left" href="{% url 'Home' %}"></a>
+<div class="back-arrow-container">
+  <a  id="backButton" class="back-arrow left" href="{% url 'Home' %}"></a>
+</div>
 
 <!-- Projects Landing Page -->
 <div id="landing-div" class="landing row">
@@ -32,7 +34,7 @@
             See all portfolio items below, or filter by category
         </p>
         <a id="items" data-scroll href="#items">
-            <div class="arrow items-arrow"></div>
+            <div class="items-arrow down"></div>
         </a>
     </div>
 </div>
@@ -141,7 +143,7 @@
 
     <!-- Search Bar -->
     <form method="GET" action="">
-      <input id="searchBar" name="query" value="{{ request.GET.query }}" class="form-control" type="search" placeholder="Search items and descriptions" aria-label="Search">
+      <input id="searchBar" name="query" value="{{ request.GET.query }}" class="form-control" type="search" placeholder="Search {{projects.count}} items & their descriptions" aria-label="Search">
       <br id="searchBreak">
       <button id="searchBarButton" class="btn btn-primary" type="submit">Search</button>
       <a id="searchFilter" class="btn btn-primary dropdown-toggle"  data-toggle="collapse" href="#filterDropdown" role="button" aria-expanded="false" aria-controls="filterDropdown">Filters</a>
@@ -175,6 +177,11 @@
         <!-- Project Card -->
         <button class="btn btn-primary" data-toggle="modal" data-target="#modal{{ p.id }}" style="all: unset; cursor: pointer;">
           <div class="card">
+            
+            {% if p.scope %}
+              <div class="scope-container scope-{{p.scope.token}}" data-bs-toggle="tooltip" data-bs-placement="top" title="Scope: {{p.scope.name}} / {{p.scope.description}}"></div>
+            {% endif %}
+          
             {% if p.imageName %}
               {% load static %}
               {% with 'mkv2/'|add:p.imageName as imageName %}
@@ -204,10 +211,19 @@
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
               <div class="modal-header">
+
                 <h5 class="modal-title" id="{{ p.id }}_modalLabel">{{ p.name|safe }}</h5>
+
+                {% if p.scope %}
+                  <div class="scope-container scope-{{p.scope.token}} card-scope"></div>
+                {% endif %}
+
+                <p class="card-scope-text">Scope: {{p.scope.name}} / {{p.scope.description}}</p>
+
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
+
               </div>
               <div class="modal-body">
                 {{ p.short|safe }}
@@ -217,7 +233,7 @@
                   <hr>
                   <div id="project-carousel-{{p.id}}" class="slick-carousel">
                       {% for img in p.project_images.all %}
-                      <div class="slick-image">
+                      <div class="slick-image {% if p.project_images.count > 1 %}draggable-image{% endif %}">
                         <img src="{% static 'mkv2/projects/'|add:img.filename %}" alt="{{img.filename}}" loading=lazy>
                       </div>
                       {% endfor %}
